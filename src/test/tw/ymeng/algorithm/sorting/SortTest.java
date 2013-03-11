@@ -43,4 +43,11 @@ public class SortTest {
 
         assertArrayEquals(expected, algorithm.sort());
     }
+
+    @Test
+    public void should_sort_with_bubble_sort() {
+        Sort algorithm = new BubbleSort(unsorted);
+
+        assertArrayEquals(expected, algorithm.sort());
+    }
 }
