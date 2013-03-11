@@ -16,7 +16,7 @@ public class StraightInsertionSort {
             int insertedItem = items[i];
             for (int j = start; j < i; j++) {
                 if (insertedItem < items[j]) {
-                    move(items, j, i - 1);
+                    Mover.move(items, j, i - 1);
                     items[j] = insertedItem;
                     break;
                 }
@@ -26,9 +26,4 @@ public class StraightInsertionSort {
         return items;
     }
 
-    private static void move(int[] items, int from, int to) {
-        for (int i = to; i >= from; i--) {
-            items[i + 1] = items[i];
-        }
-    }
 }

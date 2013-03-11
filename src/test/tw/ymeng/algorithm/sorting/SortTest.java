@@ -17,8 +17,15 @@ public class SortTest {
     }
 
     @Test
-    public void should_sort_by_straight_insertion_sort() {
+    public void should_sort_with_straight_insertion_sort() {
         int[] actual = StraightInsertionSort.sort(unsorted);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void should_sort_with_shell_sort() {
+        int[] actual = ShellSort.sort(unsorted);
 
         assertArrayEquals(expected, actual);
     }
