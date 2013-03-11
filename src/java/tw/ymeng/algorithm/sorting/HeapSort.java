@@ -24,6 +24,7 @@ public class HeapSort implements Sort {
         this.items = items;
     }
 
+    @Override
     public int[] sort() {
         return sort(0, items.length - 1);
     }
