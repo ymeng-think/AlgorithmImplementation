@@ -12,15 +12,13 @@ public class SortTest {
 
     @Before
     public void setUp() {
-        unsorted = new int[]{6, 7, 4, 2, 10};
-        expected = new int[]{2, 4, 6, 7, 10};
+        unsorted = new int[]{5, 9, 1, 4, 8, 2, 6, 3, 7};
+        expected = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
     }
 
     @Test
     public void should_sort_by_straight_insertion_sort() {
-        StraightInsertionSort algorithm = new StraightInsertionSort();
-
-        int[] actual = algorithm.sort(unsorted);
+        int[] actual = StraightInsertionSort.sort(unsorted);
 
         assertArrayEquals(expected, actual);
     }
