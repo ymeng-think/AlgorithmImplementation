@@ -1,6 +1,11 @@
+# Idea #
+.idea
+
+# Java Objects #
 *.class
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
