@@ -17,13 +17,20 @@ Sample
   (3) 3就是最小值，无需交换，完成  1   2   3   4
 *
 * */
-public class SelectSort {
+public class SelectSort implements Sort {
 
-    public static int[] sort(int[] items) {
-        return sort(items, 0, items.length - 1);
+    private int[] items;
+
+    public SelectSort(int[] items) {
+        this.items = items;
     }
 
-    private static int[] sort(int[] items, int start, int end) {
+    @Override
+    public int[] sort() {
+        return sort(0, items.length - 1);
+    }
+
+    private int[] sort(int start, int end) {
         for (int i = start; i <= end; i++) {
             int minIndex = i;
             for (int j = i + 1; j <= end; j++) {

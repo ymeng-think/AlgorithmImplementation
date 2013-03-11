@@ -19,13 +19,19 @@ import static tw.ymeng.algorithm.sorting.Mover.move;
 arr2 中所有的待插入的元素都插入到 arr1 中。
 *
 * */
-public class StraightInsertionSort {
+public class StraightInsertionSort implements Sort {
 
-    public static int[] sort(int[] items) {
-        return sort(items, 0, items.length - 1);
+    private int[] items;
+
+    public StraightInsertionSort(int[] items) {
+        this.items = items;
     }
 
-    private static int[] sort(int[] items, int start, int end) {
+    public int[] sort() {
+        return sort(0, items.length - 1);
+    }
+
+    private int[] sort(int start, int end) {
         for (int i = start + 1; i <= end; i++) {
             int insertedItem = items[i];
             for (int j = start; j < i; j++) {

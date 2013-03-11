@@ -31,13 +31,19 @@ import static tw.ymeng.algorithm.sorting.Mover.move;
 定解的理论结果是一致的。
 *
 * */
-public class ShellSort {
+public class ShellSort implements Sort {
 
-    public static int[] sort(int[] items) {
-        return sort(items, 0, items.length - 1);
+    private int[] items;
+
+    public ShellSort(int[] items) {
+        this.items = items;
     }
 
-    private static int[] sort(int[] items, int start, int end) {
+    public int[] sort() {
+        return sort(0, items.length - 1);
+    }
+
+    private int[] sort(int start, int end) {
         for (int step = initStep(start, end); step >= 1; step = (step + 1) / 2 - 1) {
             for (int groupIndex = 0; groupIndex < step; groupIndex++) {
                 insertSort(items, groupIndex, step, end);

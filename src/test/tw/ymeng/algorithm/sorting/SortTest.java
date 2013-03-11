@@ -18,29 +18,29 @@ public class SortTest {
 
     @Test
     public void should_sort_with_straight_insertion_sort() {
-        int[] actual = StraightInsertionSort.sort(unsorted);
+        Sort algorithm = new StraightInsertionSort(unsorted);
 
-        assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, algorithm.sort());
     }
 
     @Test
     public void should_sort_with_shell_sort() {
-        int[] actual = ShellSort.sort(unsorted);
+        Sort algorithm = new ShellSort(unsorted);
 
-        assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, algorithm.sort());
     }
 
     @Test
     public void should_sort_with_select_sort() {
-        int[] actual = SelectSort.sort(unsorted);
+        Sort algorithm = new SelectSort(unsorted);
 
-        assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, algorithm.sort());
     }
 
     @Test
     public void should_sort_with_heap_sort() {
-        int[] actual = HeapSort.sort(unsorted);
+        Sort algorithm = new HeapSort(unsorted);
 
-        assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, algorithm.sort());
     }
 }

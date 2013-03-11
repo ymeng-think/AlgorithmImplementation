@@ -16,31 +16,37 @@ import static tw.ymeng.algorithm.sorting.Swapper.swap;
 一个节点为止。
 *
 **/
-public class HeapSort {
+public class HeapSort implements Sort {
 
-    public static int[] sort(int[] items) {
-        return sort(items, 0, items.length - 1);
+    private int[] items;
+
+    public HeapSort(int[] items) {
+        this.items = items;
     }
 
-    private static int[] sort(int[] items, int start, int end) {
-        initHeap(items, start, end);
+    public int[] sort() {
+        return sort(0, items.length - 1);
+    }
+
+    private int[] sort(int start, int end) {
+        initHeap(start, end);
 
         for (int i = end - start + 1; i >= 2; i--) {
             swap(items, start, i - 1);
-            adjustNode(items, 1, i - 1);
+            adjustNode(1, i - 1);
         }
 
         return items;
     }
 
-    private static void initHeap(int[] items, int start, int end) {
+    private void initHeap(int start, int end) {
         int lastBranchNodeIndex = (end - start + 1) / 2;
         for (int i = lastBranchNodeIndex; i >= 1; i--) {
-            adjustNode(items, i, end - start + 1);
+            adjustNode(i, end - start + 1);
         }
     }
 
-    private static void adjustNode(int[] items, int parentNodeIndex, int length) {
+    private void adjustNode(int parentNodeIndex, int length) {
         int minNodeIndex = parentNodeIndex;
 
         if (hasLeftSubTree(parentNodeIndex, length)) {
@@ -58,7 +64,7 @@ public class HeapSort {
         if (minNodeIndex != parentNodeIndex) {
             swap(items, parentNodeIndex - 1, minNodeIndex - 1);
             if (minNodeIndex * 2 <= length) {
-                adjustNode(items, minNodeIndex, length);
+                adjustNode(minNodeIndex, length);
             }
         }
     }
