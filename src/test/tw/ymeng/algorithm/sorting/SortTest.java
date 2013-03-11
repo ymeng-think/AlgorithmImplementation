@@ -29,4 +29,11 @@ public class SortTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void should_sort_with_select_sort() {
+        int[] actual = SelectSort.sort(unsorted);
+
+        assertArrayEquals(expected, actual);
+    }
 }
