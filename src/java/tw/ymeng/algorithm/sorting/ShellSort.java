@@ -1,5 +1,7 @@
 package tw.ymeng.algorithm.sorting;
 
+import static tw.ymeng.algorithm.sorting.Mover.move;
+
 /*
 *
 *  希尔思想介绍
@@ -30,6 +32,7 @@ package tw.ymeng.algorithm.sorting;
 *
 * */
 public class ShellSort {
+
     public static int[] sort(int[] items) {
         return sort(items, 0, items.length - 1);
     }
@@ -45,9 +48,7 @@ public class ShellSort {
     }
 
     private static void insertSort(int[] items, int groupIndex, int step, int terminal) {
-        int start = groupIndex;
-        int end = start;
-
+        int end = groupIndex;
         while ((end + step) <= terminal) {
             end += step;
         }
@@ -56,7 +57,7 @@ public class ShellSort {
             for (int j = groupIndex; j < i; j += step) {
                 int insertedItem = items[i];
                 if (insertedItem < items[j]) {
-                    Mover.move(items, j, i - step, step);
+                    move(items, j, i - step, step);
                     items[j] = insertedItem;
                     break;
                 }
