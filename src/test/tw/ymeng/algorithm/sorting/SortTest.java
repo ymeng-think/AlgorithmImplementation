@@ -36,4 +36,11 @@ public class SortTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void should_sort_with_heap_sort() {
+        int[] actual = HeapSort.sort(unsorted);
+
+        assertArrayEquals(expected, actual);
+    }
 }

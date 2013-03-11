@@ -1,5 +1,7 @@
 package tw.ymeng.algorithm.sorting;
 
+import static tw.ymeng.algorithm.sorting.Swapper.swap;
+
 /*
 * 简单选择排序
 
@@ -36,13 +38,4 @@ public class SelectSort {
         return items;
     }
 
-    private static void swap(int[] items, int from, int to) {
-        if (from == to) {
-            return;
-        }
-
-        int temp = items[from];
-        items[from] = items[to];
-        items[to] = temp;
-    }
 }
