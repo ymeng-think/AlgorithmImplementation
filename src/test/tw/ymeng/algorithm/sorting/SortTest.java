@@ -50,4 +50,18 @@ public class SortTest {
 
         assertArrayEquals(expected, algorithm.sort());
     }
+
+    @Test
+    public void should_sort_using_merge_sort_with_guard() {
+        Sort algorithm = MergeSort.MergeSortWithGuard(unsorted);
+
+        assertArrayEquals(expected, algorithm.sort());
+    }
+
+    @Test
+    public void should_sort_using_merge_sort_without_guard() {
+        Sort algorithm = MergeSort.MergeSortWithoutGuard(unsorted);
+
+        assertArrayEquals(expected, algorithm.sort());
+    }
 }
