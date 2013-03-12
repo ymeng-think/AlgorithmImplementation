@@ -16,10 +16,10 @@ public class BubbleSort implements Sort {
     }
 
     private int[] sort(int start, int end) {
-        for (int i = start; i < end; i++) {
-            for (int j = start; j < end - i; j++) {
-                if (items[j] > items[j + 1]) {
-                    swap(items, j, j + 1);
+        for (int i = start; i <= end; i++) {
+            for (int j = end; j > i; j--) {
+                if (items[j] < items[j - 1]) {
+                    swap(items, j - 1, j);
                 }
             }
         }
