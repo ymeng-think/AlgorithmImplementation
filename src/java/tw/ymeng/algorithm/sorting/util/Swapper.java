@@ -1,6 +1,6 @@
-package tw.ymeng.algorithm.sorting;
+package tw.ymeng.algorithm.sorting.util;
 
-class Swapper {
+public class Swapper {
 
     public static void swap(int[] items, int from, int to) {
         if (from == to) {

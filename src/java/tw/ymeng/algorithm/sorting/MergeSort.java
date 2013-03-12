@@ -1,6 +1,8 @@
 package tw.ymeng.algorithm.sorting;
 
-import static java.lang.System.arraycopy;
+import tw.ymeng.algorithm.sorting.util.MergeStrategy;
+import tw.ymeng.algorithm.sorting.util.MergeWithGuard;
+import tw.ymeng.algorithm.sorting.util.MergeWithoutGuard;
 
 /*
 * 归并排序

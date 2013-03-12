@@ -1,6 +1,6 @@
-package tw.ymeng.algorithm.sorting;
+package tw.ymeng.algorithm.sorting.util;
 
-class Mover {
+public class Mover {
 
     public static void move(int[] items, int from, int to) {
         move(items, from, to, 1);

@@ -1,6 +1,6 @@
 package tw.ymeng.algorithm.sorting;
 
-import static tw.ymeng.algorithm.sorting.Swapper.swap;
+import static tw.ymeng.algorithm.sorting.util.Swapper.swap;
 
 /*
 * 堆排序

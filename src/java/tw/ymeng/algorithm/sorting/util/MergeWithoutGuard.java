@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.sorting;
+package tw.ymeng.algorithm.sorting.util;
 
 import static java.lang.System.arraycopy;
 

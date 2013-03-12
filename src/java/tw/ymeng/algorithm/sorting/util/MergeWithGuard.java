@@ -1,8 +1,8 @@
-package tw.ymeng.algorithm.sorting;
+package tw.ymeng.algorithm.sorting.util;
 
 import static java.lang.System.arraycopy;
 
-class MergeWithGuard implements MergeStrategy {
+public class MergeWithGuard implements MergeStrategy {
 
     private static final int GUARD = 1000000;
 
