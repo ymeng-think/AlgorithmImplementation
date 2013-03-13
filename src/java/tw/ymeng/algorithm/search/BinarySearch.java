@@ -17,17 +17,39 @@ public class BinarySearch {
         return search(0, items.length - 1, item);
     }
 
-    private int search(int start, int end, int item) {
-        while (start < end) {
-            int mid = start + (end - start) / 2;
+    public int searchPreItem(int item) {
+        return searchPreItem(0, items.length - 1, item);
+    }
+
+    private int search(int low, int high, int item) {
+        while (low < high) {
+            int mid = low + (high - low) / 2;
 
             if (items[mid] == item) {
                 return mid;
             } else if (items[mid] > item) {
-                end = mid;
+                high = mid - 1;
             } else {
-                start = mid + 1;
+                low = mid + 1;
             }
+        }
+
+        return -1;
+    }
+
+    private int searchPreItem(int low, int high, int item) {
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+
+            if (items[mid] >= item) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        if (low - 1 >= 0) {
+            return low - 1;
         }
 
         return -1;

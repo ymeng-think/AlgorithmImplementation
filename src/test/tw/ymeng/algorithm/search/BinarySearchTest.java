@@ -11,14 +11,14 @@ public class BinarySearchTest {
 
     @Before
     public void setUp() {
-        sortedItems = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        sortedItems = new int[]{1, 2, 3, 5, 7, 8, 9};
     }
 
     @Test
     public void should_return_index_when_search_an_existed_item() {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
-        assertEquals(4, algorithm.search(5));
+        assertEquals(3, algorithm.search(5));
     }
 
     @Test
@@ -26,5 +26,12 @@ public class BinarySearchTest {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
         assertEquals(-1, algorithm.search(10));
+    }
+
+    @Test
+    public void should_return_index_when_find_low_boundary_of_an_existed_item() {
+        BinarySearch algorithm = new BinarySearch(sortedItems);
+
+        assertEquals(3, algorithm.searchPreItem(6));
     }
 }
