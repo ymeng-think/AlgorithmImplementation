@@ -33,13 +33,27 @@ public class BinarySearchTest {
     public void should_return_index_when_find_previous_item() {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
-        assertEquals(3, algorithm.searchPreItem(6));
+        assertEquals(3, algorithm.searchPrevItem(6));
     }
 
     @Test
     public void should_return_negative_when_do_NOT_exist_previous_item() {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
-        assertTrue(algorithm.searchPreItem(0) < 0);
+        assertTrue(algorithm.searchPrevItem(0) < 0);
+    }
+
+    @Test
+    public void should_return_index_when_find_next_item() {
+        BinarySearch algorithm = new BinarySearch(sortedItems);
+
+        assertEquals(4, algorithm.searchNextItem(6));
+    }
+
+    @Test
+    public void should_return_negative_when_do_NOT_exist_next_item() {
+        BinarySearch algorithm = new BinarySearch(sortedItems);
+
+        assertTrue(algorithm.searchNextItem(10) < 0);
     }
 }

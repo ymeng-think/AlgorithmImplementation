@@ -17,8 +17,12 @@ public class BinarySearch {
         return search(0, items.length - 1, item);
     }
 
-    public int searchPreItem(int item) {
-        return searchPreItem(0, items.length - 1, item);
+    public int searchPrevItem(int item) {
+        return searchPrevItem(0, items.length - 1, item);
+    }
+
+    public int searchNextItem(int item) {
+        return searchNextItem(0, items.length - 1, item);
     }
 
     private int search(int low, int high, int item) {
@@ -37,7 +41,7 @@ public class BinarySearch {
         return -1;
     }
 
-    private int searchPreItem(int low, int high, int item) {
+    private int searchPrevItem(int low, int high, int item) {
         while (low < high) {
             int mid = low + (high - low) / 2;
 
@@ -50,6 +54,25 @@ public class BinarySearch {
 
         if (low - 1 >= 0) {
             return low - 1;
+        }
+
+        return -1;
+    }
+
+    private int searchNextItem(int low, int high, int item) {
+        int length = high + 1;
+        while (low < high) {
+            int mid = low + (high - low + 1) / 2;
+
+            if (items[mid] <= item) {
+                low = mid;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        if (high + 1 < length) {
+            return high + 1;
         }
 
         return -1;
