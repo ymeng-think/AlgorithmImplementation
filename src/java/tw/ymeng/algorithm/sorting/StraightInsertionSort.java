@@ -3,6 +3,7 @@ package tw.ymeng.algorithm.sorting;
 import static tw.ymeng.algorithm.sorting.util.Mover.move;
 
 /*
+* 直接插入排序
 *
 * Algorithm Time Complexity = O(n^2)
 

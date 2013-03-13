@@ -4,6 +4,8 @@ import static tw.ymeng.algorithm.sorting.util.Swapper.swap;
 
 /*
 * 简单选择排序
+*
+* Algorithm Time Complexity = O(n^2)
 
 每一趟从待排序的数据元素中选出最小（或最大）的一个元素，顺序放在已排好序的数列的最后，直到全部待排序的数据元素排完。
 选择排序不像冒泡排序算法那样先并不急于调换位置，第一轮（k=1）先从array[k]开始逐个检查，看哪个数最小就记下该数所在的位置于minlIndex中，

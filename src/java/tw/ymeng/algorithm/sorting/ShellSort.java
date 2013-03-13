@@ -4,7 +4,9 @@ import static tw.ymeng.algorithm.sorting.util.Mover.move;
 
 /*
 *
-*  希尔思想介绍
+* 希尔排序
+*
+* Algorithm Time Complexity = O(n^1.25)~O(1.6n^1.25)
 
 希尔算法的本质是缩小增量排序，是对直接插入排序算法的改进。一般直接插入排序的时间复杂度为O ( n^2 ) ，但是当数列基本有序时，如果按照有数列
 顺序排时，时间复杂度将改善到O( n )，另外,因直接插入排序算法简单,如果待排序列规模不很大时效率也较高，Shell 根据这两点分析结果进行了改进，

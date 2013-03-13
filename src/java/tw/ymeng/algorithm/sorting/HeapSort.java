@@ -4,6 +4,8 @@ import static tw.ymeng.algorithm.sorting.util.Swapper.swap;
 
 /*
 * 堆排序
+*
+* Algorithm Time Complexity = O(n)
 
 堆排序其实最主要的两个过程：第一步，创建初始堆；第二步，交换根节点与最后一个非叶子节
 

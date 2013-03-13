@@ -2,6 +2,12 @@ package tw.ymeng.algorithm.sorting;
 
 import static tw.ymeng.algorithm.sorting.util.Swapper.swap;
 
+/*
+* 冒泡排序
+*
+* Algorithm Time Complexity = O(n^2)
+*
+* */
 public class BubbleSort implements Sort {
 
     private int[] items;
