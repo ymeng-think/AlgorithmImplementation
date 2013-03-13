@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 public class BinarySearchTest {
 
@@ -22,16 +23,23 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void should_return_negative_when_search_unexisted_item() {
+    public void should_return_negative_when_search_UNEXISTED_item() {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
-        assertEquals(-1, algorithm.search(10));
+        assertTrue(algorithm.search(10) < 0);
     }
 
     @Test
-    public void should_return_index_when_find_low_boundary_of_an_existed_item() {
+    public void should_return_index_when_find_previous_item() {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
         assertEquals(3, algorithm.searchPreItem(6));
+    }
+
+    @Test
+    public void should_return_negative_when_do_NOT_exist_previous_item() {
+        BinarySearch algorithm = new BinarySearch(sortedItems);
+
+        assertTrue(algorithm.searchPreItem(0) < 0);
     }
 }
