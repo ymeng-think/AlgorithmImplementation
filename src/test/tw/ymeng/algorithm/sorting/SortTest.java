@@ -64,4 +64,11 @@ public class SortTest {
 
         assertArrayEquals(expected, algorithm.sort());
     }
+
+    @Test
+    public void should_sort_with_quick_sort() {
+        Sort algorithm = new QuickSort(unsorted);
+
+        assertArrayEquals(expected, algorithm.sort());
+    }
 }
