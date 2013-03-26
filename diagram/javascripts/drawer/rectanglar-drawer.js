@@ -9,7 +9,7 @@ RectanglarDrawer.prototype = (function() {
 
     function draw(width, height) {
         var me = this;
-        me.canvas.append(rectanglar(width, height));
+        me.canvas.append(rectanglar(width - 2, height));
     }
 
     return {

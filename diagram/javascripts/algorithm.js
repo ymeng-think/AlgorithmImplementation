@@ -1,12 +1,15 @@
 $(function() {
     var canvas = $("#canvas");
-    var items = new Array(1, 2, 3, 4, 5, 6);
-
-    drawPillars(canvas, items);
+    drawPillars(canvas, generateArray(100));
 });
 
+var generateArray = function(max) {
+    var generator = new SequenceGenerator();
+    return generator.generate(max);
+};
+
 var drawPillars = function(canvas, items) {
-    var horizontalMargin = 50;
+    var horizontalMargin = 20;
 
     var totalWidth = canvas.width() - horizontalMargin;
     var totalHeight = canvas.height();
@@ -16,6 +19,6 @@ var drawPillars = function(canvas, items) {
 
     var drawer = new RectanglarDrawer(canvas);
     for (var i = 0; i < items.length; i++) {
-        drawer.draw(pillarWidth, pillarHeight * (i + 1));
+        drawer.draw(pillarWidth, pillarHeight * items[i]);
     }
 };
