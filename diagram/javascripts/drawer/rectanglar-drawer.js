@@ -7,14 +7,14 @@ RectanglarDrawer.prototype = (function() {
         return $("<canvas/>", {'class': 'pillar'}).width(width).height(height);
     }
 
-    function draw() {
+    function draw(width, height) {
         var me = this;
-        me.canvas.append(rectanglar(10, 300));
+        me.canvas.append(rectanglar(width, height));
     }
 
     return {
-        draw: function() {
-            draw.call(this);
+        draw: function(width, height) {
+            draw.call(this, width, height);
         }
     };
 })();
