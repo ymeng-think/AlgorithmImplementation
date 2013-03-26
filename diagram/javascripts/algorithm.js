@@ -5,7 +5,9 @@ $(function() {
 
 var generateArray = function(max) {
     var generator = new SequenceGenerator();
-    return generator.generate(max);
+    var randomization = new RandomizationInPlace();
+    var array = randomization.randomize(generator.generate(max));
+    return array;
 };
 
 var drawPillars = function(canvas, items) {
