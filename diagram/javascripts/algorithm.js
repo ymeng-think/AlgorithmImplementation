@@ -4,9 +4,8 @@ $(function() {
 });
 
 var generateArray = function(max) {
-    var generator = new SequenceGenerator();
     var randomization = new RandomizationInPlace();
-    var array = randomization.randomize(generator.generate(max));
+    var array = randomization.randomize(SequenceGenerator.generate(max));
     return array;
 };
 
