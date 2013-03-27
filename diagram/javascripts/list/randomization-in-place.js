@@ -5,16 +5,10 @@ RandomizationInPlace.prototype = (function() {
         return Math.round(Math.random() * (max - min) + min);
     }
 
-    function swap(array, index1, index2) {
-        var temp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = temp;
-    }
-
     function randomize(array) {
         for (var i = 0; i < array.length; i++) {
             var k = randomArbitary(0, array.length - 1);
-            swap(array, i, k);
+            array.swap(i, k);
         }
         return array;
     }
