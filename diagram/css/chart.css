@@ -9,3 +9,7 @@
     border: solid 1px black;
     background: green;
 }
+
+.highlight {
+    background: yellow;
+}
