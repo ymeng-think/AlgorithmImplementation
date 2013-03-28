@@ -64,7 +64,8 @@ Canvas.prototype = (function() {
             return clear.call(this);
         },
 
-        drawPillars: function(items) {
+        redrawPillars: function(items) {
+            clear.call(this);
             return drawPillars.call(this, items);
         },
 
