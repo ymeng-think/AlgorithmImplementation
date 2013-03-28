@@ -1,8 +1,9 @@
 function BubbleSort(items) {
     this.items = items;
 
-    this.beforeSwap = null;
-    this.afterSwap = null;
+    this.willSwap = null;
+    this.didSwap = null;
+    this.didSort = null;
 }
 
 BubbleSort.prototype = (function(){
@@ -26,6 +27,9 @@ BubbleSort.prototype = (function(){
             }
             if (i > end) {
                 clearInterval(refreshId);
+                if (me.didSort) {
+                    me.didSort();
+                }
             }
         }, 10);
 
@@ -35,14 +39,14 @@ BubbleSort.prototype = (function(){
     function swap(index1, index2) {
         var me = this;
 
-        if (me.beforeSwap) {
-            me.beforeSwap(index1, index2);
+        if (me.willSwap) {
+            me.willSwap(index1, index2);
         }
 
         me.items.swap(index1, index2);
 
-        if (me.afterSwap) {
-            me.afterSwap(index1, index2);
+        if (me.didSwap) {
+            me.didSwap(index1, index2);
         }
     }
 
