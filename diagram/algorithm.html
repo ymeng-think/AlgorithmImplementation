@@ -13,7 +13,21 @@
     <script type="text/javascript" src="javascripts/sorting/bubble-sort.js"></script>
 </head>
 <body>
-    <button id="sort">Sort</button>
+    <ul class="setting">
+        <li>
+            <label>Pillar Count:</label>
+            <input type="text" id="elementCount" class="pillarCount" />
+        </li>
+        <li>
+            <label>Speed:</label>
+            <input type="radio" name="speed" class="speed" /><label>1X</label>
+            <input type="radio" name="speed" class="speed" /><label>2X</label>
+            <input type="radio" name="speed" class="speed" checked="checked" /><label>3X</label>
+        </li>
+        <li>
+            <button id="sort" class="sort">Sort</button>
+        </li>
+    </ul>
     <div id="canvas" class="canvas"></div>
 </body>
 </html>

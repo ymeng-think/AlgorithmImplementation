@@ -8,6 +8,16 @@ body {
     text-align: center;
 }
 
+li {
+    float: left;
+    list-style:none;
+    margin: 0 30px 0 0;
+}
+
+li label {
+    font-size: 15px;
+}
+
 .pillar {
     border: solid 1px black;
     background: #ccf7c9;
@@ -15,4 +25,24 @@ body {
 
 .highlight {
     background: #3ce230;
+}
+
+.pillarCount {
+    text-align: right;
+    width: 70px;
+}
+
+.setting {
+    height: 22px;
+    padding: 5px 10px;
+}
+
+.sort {
+    background: white;
+    border: solid 1px #333333;
+    font-size: 13px;
+}
+
+.speed {
+    margin: 0 3px;
 }
