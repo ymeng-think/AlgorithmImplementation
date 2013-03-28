@@ -1,5 +1,8 @@
+body {
+    background: #efefef;
+}
+
 .canvas {
-    background: #d3d3d3;
     height: 400px;
     padding: 20px 0 20px 0;
     text-align: center;
@@ -7,9 +10,9 @@
 
 .pillar {
     border: solid 1px black;
-    background: green;
+    background: #ccf7c9;
 }
 
 .highlight {
-    background: yellow;
+    background: #3ce230;
 }
