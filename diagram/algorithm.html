@@ -11,6 +11,7 @@
     <script type="text/javascript" src="javascripts/list/randomization-in-place.js"></script>
     <script type="text/javascript" src="javascripts/render/bubble-sort-render.js"></script>
     <script type="text/javascript" src="javascripts/sorting/bubble-sort.js"></script>
+    <script type="text/javascript" src="javascripts/sorting/sort-speed.js"></script>
 </head>
 <body>
     <ul class="setting">
@@ -20,9 +21,9 @@
         </li>
         <li>
             <label>Speed:</label>
-            <input type="radio" name="speed" class="speed" /><label>1X</label>
-            <input type="radio" name="speed" class="speed" /><label>2X</label>
-            <input type="radio" name="speed" class="speed" checked="checked" /><label>3X</label>
+            <input type="radio" name="speed" class="speed" data-level="1" checked="checked" /><label>1X</label>
+            <input type="radio" name="speed" class="speed" data-level="2" /><label>2X</label>
+            <input type="radio" name="speed" class="speed" data-level="3" /><label>3X</label>
         </li>
         <li>
             <button id="sort" class="sort">Sort</button>

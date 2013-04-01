@@ -5,7 +5,8 @@ $(function() {
     var items = [];
 
     $("#sort").click(function(){
-        var render = new BubbleSortRender(new BubbleSort(items), canvas);
+        var speedLevel = $("input[name='speed']:checked").data("level");
+        var render = new BubbleSortRender(new BubbleSort(items, SortSpeed.get(speedLevel)), canvas);
         render.start();
     });
 

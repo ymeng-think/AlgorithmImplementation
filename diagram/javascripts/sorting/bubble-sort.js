@@ -1,5 +1,6 @@
-function BubbleSort(items) {
+function BubbleSort(items, speed) {
     this.items = items;
+    this.speed = speed;
 
     this.willSwap = null;
     this.didSwap = null;
@@ -31,7 +32,7 @@ BubbleSort.prototype = (function(){
                     me.didSort();
                 }
             }
-        }, 10);
+        }, me.speed);
 
         return me.items;
     }
