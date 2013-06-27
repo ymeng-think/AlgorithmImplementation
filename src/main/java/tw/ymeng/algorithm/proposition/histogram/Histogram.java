@@ -1,5 +1,8 @@
 package tw.ymeng.algorithm.proposition.histogram;
 
+import static tw.ymeng.algorithm.proposition.histogram.Bitmap.bitmap;
+import static tw.ymeng.algorithm.proposition.histogram.Max.max;
+
 /*
 * 给定直方图，每一小块的height由N个非负整数所确定，每一小块的width都为1，请找出直方图中面积最大的矩形。
 *  如下图所示，直方图中每一块的宽度都是1，每一块给定的高度分别是[2,1,5,6,2,3]：
@@ -20,9 +23,11 @@ public class Histogram {
 
     private static final int HEIGHT = 1;
     private final int[] widths;
+    private final boolean[][] bitmap;
 
     public Histogram(int... widths) {
         this.widths = widths;
+        bitmap = bitmap(widths.length, max(widths)).with(widths).build();
     }
 
     public int getMaxArea() {

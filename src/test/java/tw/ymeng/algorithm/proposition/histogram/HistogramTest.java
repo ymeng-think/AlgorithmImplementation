@@ -1,7 +1,7 @@
 package tw.ymeng.algorithm.proposition.histogram;
 
+import org.junit.Ignore;
 import org.junit.Test;
-import tw.ymeng.algorithm.proposition.histogram.Histogram;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,5 +15,15 @@ public class HistogramTest {
         int area = histograms.getMaxArea();
 
         assertThat(area, is(2));
+    }
+
+    @Test
+    @Ignore
+    public void should_get_max_area() {
+        Histogram histograms = new Histogram(2, 1, 5, 6, 2, 3);
+
+        int area = histograms.getMaxArea();
+
+        assertThat(area, is(10));
     }
 }
