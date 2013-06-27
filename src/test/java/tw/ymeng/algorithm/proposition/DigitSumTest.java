@@ -38,4 +38,15 @@ public class DigitSumTest {
         assertThat(couple[0], is(4));
         assertThat(couple[1], is(11));
     }
+
+    @Test
+    public void should_return_first_couple_when_there_are_multi_candidates_matched_request() {
+        DigitSum sum = new DigitSum(1, 2, 3, 4, 7, 11, 12, 15);
+
+        int[] couple = sum.is(15);
+
+        assertThat(couple.length, is(2));
+        assertThat(couple[0], is(3));
+        assertThat(couple[1], is(12));
+    }
 }
