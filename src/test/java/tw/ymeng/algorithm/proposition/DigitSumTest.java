@@ -49,4 +49,15 @@ public class DigitSumTest {
         assertThat(couple[0], is(3));
         assertThat(couple[1], is(12));
     }
+
+    @Test
+    public void should_find_a_couple_of_numbers_that_sum_is_specified_number_when_there_is_a_unsorted_number_list() {
+        DigitSum sum = new DigitSum(1, 4, 2, 11, 15, 7);
+
+        int[] couple = sum.is(15);
+
+        assertThat(couple.length, is(2));
+        assertThat(couple[0], is(4));
+        assertThat(couple[1], is(11));
+    }
 }

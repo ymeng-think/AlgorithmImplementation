@@ -1,5 +1,7 @@
 package tw.ymeng.algorithm.proposition;
 
+import tw.ymeng.algorithm.sorting.HeapSort;
+
 /*
 * 输入一个数组和一个数字，在数组中查找两个数，使得它们的和正好是输入的那个数字。
 *  要求时间复杂度是O(n)。
@@ -12,7 +14,7 @@ public class DigitSum {
     private final int[] numbers;
 
     public DigitSum(int... numbers) {
-        this.numbers = numbers;
+        this.numbers = new HeapSort(numbers).sort();
     }
 
     public int[] is(int sum) {
