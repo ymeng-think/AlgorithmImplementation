@@ -1,6 +1,7 @@
-package tw.ymeng.algorithm.proposition;
+package tw.ymeng.algorithm.proposition.histogram;
 
 import org.junit.Test;
+import tw.ymeng.algorithm.proposition.histogram.Histogram;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

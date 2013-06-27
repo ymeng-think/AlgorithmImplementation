@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.proposition;
+package tw.ymeng.algorithm.proposition.histogram;
 
 /*
 * 给定直方图，每一小块的height由N个非负整数所确定，每一小块的width都为1，请找出直方图中面积最大的矩形。
