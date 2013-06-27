@@ -21,16 +21,16 @@ import static tw.ymeng.algorithm.proposition.histogram.Max.max;
 * */
 public class Histogram {
 
-    private static final int HEIGHT = 1;
-    private final int[] widths;
+    private static final int WIDTH = 1;
+    private final int[] heights;
     private final boolean[][] bitmap;
 
-    public Histogram(int... widths) {
-        this.widths = widths;
-        bitmap = bitmap(widths.length, max(widths)).with(widths).build();
+    public Histogram(int... heights) {
+        this.heights = heights;
+        bitmap = bitmap(heights.length, max(heights)).with(heights).build();
     }
 
     public int getMaxArea() {
-        return widths[0] * HEIGHT;
+        return heights[0] * WIDTH;
     }
 }
