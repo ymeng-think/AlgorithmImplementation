@@ -16,12 +16,12 @@ package tw.ymeng.algorithm.proposition;
 *    请完成函数int largestRectangleArea(vector<int> &height)，实现寻找直方图中面积最大的矩形的功能，
 * 如当给定直方图各小块的高度= [2,1,5,6,2,3] ，返回10。
 * */
-public class HistogramCollection {
+public class Histogram {
 
     private static final int HEIGHT = 1;
     private final int[] widths;
 
-    public HistogramCollection(int... widths) {
+    public Histogram(int... widths) {
         this.widths = widths;
     }
 
