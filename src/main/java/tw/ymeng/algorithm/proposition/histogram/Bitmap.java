@@ -1,6 +1,6 @@
 package tw.ymeng.algorithm.proposition.histogram;
 
-public class Bitmap {
+class Bitmap {
 
     private final boolean[][] bitmap;
 
