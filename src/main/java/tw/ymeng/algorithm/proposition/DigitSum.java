@@ -16,8 +16,16 @@ public class DigitSum {
     }
 
     public int[] is(int sum) {
-        if (sum(numbers[0], numbers[1]) == sum) {
-            return array(numbers[0], numbers[1]);
+        for (int i = 0, j = numbers.length - 1, step = 0; i < j; step++) {
+            if (sum(numbers[i], numbers[j]) == sum) {
+                return array(numbers[i], numbers[j]);
+            }
+
+            if (step % 2 == 0) {
+                i++;
+            } else {
+                j--;
+            }
         }
         return NULL;
     }

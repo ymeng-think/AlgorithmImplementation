@@ -27,4 +27,15 @@ public class DigitSumTest {
 
         assertThat(couple, sameInstance(DigitSum.NULL));
     }
+
+    @Test
+    public void should_find_a_couple_of_numbers_that_sum_is_specified_number_when_there_is_a_sorted_number_list() {
+        DigitSum sum = new DigitSum(1, 2, 4, 7, 11, 15);
+
+        int[] couple = sum.is(15);
+
+        assertThat(couple.length, is(2));
+        assertThat(couple[0], is(4));
+        assertThat(couple[1], is(11));
+    }
 }
