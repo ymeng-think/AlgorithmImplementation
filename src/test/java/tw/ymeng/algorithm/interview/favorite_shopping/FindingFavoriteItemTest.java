@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.interview.favoriteshopping;
+package tw.ymeng.algorithm.interview.favorite_shopping;
 
 import org.junit.Test;
 
