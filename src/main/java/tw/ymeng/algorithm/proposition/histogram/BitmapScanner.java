@@ -20,8 +20,6 @@ public class BitmapScanner {
             for (int i = 0; i < width; i++) {
                 if (isMarked(i, j)) {
                     rectWidth++;
-                } else {
-
                 }
             }
             int rectHeight = j + 1;

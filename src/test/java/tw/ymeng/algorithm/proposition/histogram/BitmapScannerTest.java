@@ -61,9 +61,8 @@ public class BitmapScannerTest {
     }
 
     @Test
-    @Ignore
     public void should_get_max_area_when_rectangles_are_arranged_as_pyramid() {
-        BitmapScanner bitmapScanner = new BitmapScanner(build(3, new boolean[]{
+        BitmapScanner bitmapScanner = new BitmapScanner(build(5, new boolean[]{
                 X, X, O, X, X,
                 X, O, O, O, X,
                 O, O, O, O, O,
