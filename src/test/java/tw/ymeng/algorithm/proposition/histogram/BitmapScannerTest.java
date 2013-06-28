@@ -61,6 +61,20 @@ public class BitmapScannerTest {
     }
 
     @Test
+    public void should_get_max_area_when_rectangles_are_arranged_as_mirrored_ladder() {
+        BitmapScanner bitmapScanner = new BitmapScanner(build(3, new boolean[]{
+                O, X, X,
+                O, O, X,
+                O, O, O
+        }));
+
+        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+
+        assertThat(rectangle.width(), is(2));
+        assertThat(rectangle.height(), is(2));
+    }
+
+    @Test
     public void should_get_max_area_when_rectangles_are_arranged_as_pyramid() {
         BitmapScanner bitmapScanner = new BitmapScanner(build(5, new boolean[]{
                 X, X, O, X, X,
