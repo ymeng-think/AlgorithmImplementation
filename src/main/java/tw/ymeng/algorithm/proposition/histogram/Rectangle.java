@@ -2,6 +2,8 @@ package tw.ymeng.algorithm.proposition.histogram;
 
 class Rectangle {
 
+    public static final Rectangle NULL = new Rectangle(0, 0);
+
     private final int width;
     private final int height;
 

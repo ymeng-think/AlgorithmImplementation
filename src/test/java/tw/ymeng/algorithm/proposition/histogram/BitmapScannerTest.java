@@ -10,6 +10,7 @@ import static tw.ymeng.algorithm.proposition.histogram.BitmapBuilder.*;
 public class BitmapScannerTest {
 
     @Test
+    @Ignore
     public void should_get_max_area_when_there_is_only_one_bit() {
         BitmapScanner bitmapScanner = new BitmapScanner(build(1, new boolean[]{
                 O
