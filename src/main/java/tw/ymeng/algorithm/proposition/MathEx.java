@@ -1,16 +1,18 @@
 package tw.ymeng.algorithm.proposition;
 
+import java.math.BigInteger;
+
 public final class MathEx {
 
-    public static long pow(long x, int n) {
+    public static BigInteger pow(int x, int n) {
         if (n == 0) {
-            return 1;
+            return BigInteger.valueOf(1);
         }
 
         if (isEven(n)) {
             return pow(x * x, n / 2);
         } else {
-            return pow(x * x, n / 2) * x;
+            return pow(x * x, n / 2).multiply(BigInteger.valueOf(x));
         }
     }
 
