@@ -2,75 +2,59 @@ package tw.ymeng.algorithm.proposition.histogram;
 
 public class BitmapScanner {
 
+    private final VerticalBitRectangle holder;
     private final boolean[][] bitmap;
-    private int width;
     private int height;
 
     public BitmapScanner(boolean[][] bitmap) {
         this.bitmap = bitmap;
-        this.width = bitmap.length;
         this.height = bitmap[0].length;
+        this.holder = VerticalBitRectangle.holder(height);
     }
 
-    public Rectangle getMaxRectangle() {
-        boolean[] prevMerged = emptyBitArray();
-        Rectangle maxRect = Rectangle.NULL;
+    public VerticalBitRectangle getMaxRectangle() {
+        return maxArea(0, bitmap.length - 1);
+    }
 
-        for (int i = 0; i < width - 1; i++) {
-            int maxRectWidth = 1, maxRectHeight = 1;
-            for (int j = i + 1; j < width; j++) {
-                boolean[] merged = merge(bitmap[i], bitmap[j]);
-
-                if (!isLessThan(merged, prevMerged)) {
-                    maxRectWidth++;
-                    prevMerged = merged;
-                }
-            }
-            maxRectHeight = calculateWidth(prevMerged);
-
-            Rectangle newRect = new Rectangle(maxRectWidth, maxRectHeight);
-            if (newRect.isLargerThan(maxRect)) {
-                maxRect = newRect;
+    private VerticalBitRectangle maxArea(int left, int right) {
+        if (left == right) {
+            VerticalBitRectangle bitRectangle = VerticalBitRectangle.convertFrom(bitmap[left]);
+            if (bitRectangle.area() > 0) {
+                return bitRectangle;
+            } else {
+                return VerticalBitRectangle.NULL;
             }
         }
 
-        return maxRect;
-    }
+        int center = (left + right) / 2;
+        VerticalBitRectangle maxLeftArea = maxArea(left, center);
+        VerticalBitRectangle maxRightArea = maxArea(center + 1, right);
 
-    private int calculateWidth(boolean[] bitArray) {
-        int counter = 0;
-        for (int i = 0; i < bitArray.length; i++) {
-            if (isMarked(bitArray, i)) {
-                counter++;
+        VerticalBitRectangle maxLeftBorderArea = holder, leftBorderArea = holder;
+        for (int i = center; i >= left; i--) {
+            leftBorderArea = leftBorderArea.merge(bitmap[i]);
+            if (leftBorderArea.isLargerThan(maxLeftBorderArea)) {
+                maxLeftBorderArea = leftBorderArea;
             }
         }
-        return counter;
-    }
 
-    private boolean isLessThan(boolean[] b1, boolean[] b2) {
-        for (int i = 0; i < b1.length; i++) {
-            if (!b1[i] && b2[i]) {
-                return true;
+        VerticalBitRectangle maxRightBorderArea = holder, rightBorderArea = holder;
+        for (int i = center + 1; i <= right; i++) {
+            rightBorderArea = rightBorderArea.merge(bitmap[i]);
+            if (rightBorderArea.isLargerThan(maxRightBorderArea)) {
+                maxRightBorderArea = rightBorderArea;
             }
         }
-        return false;
+
+        return max3(maxLeftArea, maxRightArea, maxLeftBorderArea.merge(maxRightBorderArea));
     }
 
-    private boolean[] merge(boolean[] b1, boolean[] b2) {
-        boolean[] merged = new boolean[b1.length];
-
-        for (int i = 0; i < merged.length; i++) {
-            merged[i] = b1[i] & b2[i];
-        }
-
-        return merged;
+    private VerticalBitRectangle max3(VerticalBitRectangle a, VerticalBitRectangle b, VerticalBitRectangle c) {
+        return max2(max2(a, b), c);
     }
 
-    private boolean[] emptyBitArray() {
-        return new boolean[height];
+    private VerticalBitRectangle max2(VerticalBitRectangle a, VerticalBitRectangle b) {
+        return a.area() > b.area() ? a : b;
     }
 
-    private static boolean isMarked(boolean[] bitArray, int index) {
-        return bitArray[index];
-    }
 }

@@ -11,16 +11,14 @@ import static tw.ymeng.algorithm.proposition.histogram.BitmapBuilder.*;
 public class BitmapScannerTest {
 
     @Test
-    @Ignore
     public void should_get_max_area_when_there_is_only_one_bit() {
         BitmapScanner bitmapScanner = new BitmapScanner(build(1, new boolean[]{
                 O
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(1));
-        assertThat(rectangle.height(), is(1));
+        assertThat(rectangle.area(), is(1L));
     }
 
     @Test
@@ -29,10 +27,9 @@ public class BitmapScannerTest {
                 O, O
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(2));
-        assertThat(rectangle.height(), is(1));
+        assertThat(rectangle.area(), is(2L));
     }
 
     @Test
@@ -43,23 +40,9 @@ public class BitmapScannerTest {
                 O, O, O
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(2));
-        assertThat(rectangle.height(), is(2));
-    }
-
-    @Test
-    public void should_get_max_area_that_first_meet_when_rectangles_are_arranged_as_ladder() {
-        BitmapScanner bitmapScanner = new BitmapScanner(build(2, new boolean[]{
-                X, O,
-                O, O
-        }));
-
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
-
-        assertThat(rectangle.width(), is(2));
-        assertThat(rectangle.height(), is(1));
+        assertThat(rectangle.area(), is(4L));
     }
 
     @Test
@@ -70,10 +53,9 @@ public class BitmapScannerTest {
                 O, O, O
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(2));
-        assertThat(rectangle.height(), is(2));
+        assertThat(rectangle.area(), is(4L));
     }
 
     @Test
@@ -84,10 +66,9 @@ public class BitmapScannerTest {
                 X, X, O
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(2));
-        assertThat(rectangle.height(), is(2));
+        assertThat(rectangle.area(), is(4L));
     }
 
     @Test
@@ -98,10 +79,9 @@ public class BitmapScannerTest {
                 O, X, X
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(2));
-        assertThat(rectangle.height(), is(2));
+        assertThat(rectangle.area(), is(4L));
     }
 
     @Test
@@ -112,10 +92,9 @@ public class BitmapScannerTest {
                 O, O, O, O, O,
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(3));
-        assertThat(rectangle.height(), is(2));
+        assertThat(rectangle.area(), is(6L));
     }
 
     @Test
@@ -126,10 +105,9 @@ public class BitmapScannerTest {
                 X, X, O, X, X,
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(3));
-        assertThat(rectangle.height(), is(2));
+        assertThat(rectangle.area(), is(6L));
     }
 
     @Test
@@ -140,10 +118,9 @@ public class BitmapScannerTest {
                 O, O, O,
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle.width(), is(3));
-        assertThat(rectangle.height(), is(3));
+        assertThat(rectangle.area(), is(9L));
     }
 
     @Test
@@ -154,8 +131,8 @@ public class BitmapScannerTest {
                 X, X, X,
         }));
 
-        Rectangle rectangle = bitmapScanner.getMaxRectangle();
+        VerticalBitRectangle rectangle = bitmapScanner.getMaxRectangle();
 
-        assertThat(rectangle, sameInstance(Rectangle.NULL));
+        assertThat(rectangle.area(), is(0L));
     }
 }
