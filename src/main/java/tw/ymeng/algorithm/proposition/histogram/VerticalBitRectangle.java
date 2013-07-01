@@ -79,4 +79,8 @@ class VerticalBitRectangle {
         }
         return new VerticalBitRectangle(start, 1, height);
     }
+
+    public static VerticalBitRectangle holder(int height) {
+        return new VerticalBitRectangle(0, 0, height);
+    }
 }

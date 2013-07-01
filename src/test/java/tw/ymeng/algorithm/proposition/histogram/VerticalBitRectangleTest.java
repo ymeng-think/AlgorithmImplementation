@@ -94,4 +94,18 @@ public class VerticalBitRectangleTest {
         assertThat(intersected.area(), is(8L));
     }
 
+    @Test
+    public void should_build_a_bit_rectangle_as_place_holder() {
+        assertThat(VerticalBitRectangle.holder(5).area(), is(0L));
+    }
+
+    @Test
+    public void should_intersect_holder_with_bit_array() {
+        VerticalBitRectangle holder = VerticalBitRectangle.holder(3);
+
+        VerticalBitRectangle intersected = holder.merge(new boolean[]{O, X, X});
+
+        assertThat(intersected.area(), is(1L));
+    }
+
 }
