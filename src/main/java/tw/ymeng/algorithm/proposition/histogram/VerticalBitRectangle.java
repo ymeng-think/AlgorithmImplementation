@@ -18,21 +18,7 @@ class VerticalBitRectangle {
     }
 
     public VerticalBitRectangle merge(boolean[] bitArray) {
-        int newStart = start;
-        int newHeight = 0, newWidth = width;
-        for (int i = newStart; i < bitArray.length; i++) {
-            if (!bitArray[i]) {
-                break;
-            }
-            newHeight++;
-        }
-
-        if (newHeight > 0) {
-            newWidth++;
-            newHeight = Math.min(height, newHeight);
-        }
-
-        return new VerticalBitRectangle(newStart, newWidth, newHeight);
+        return this.merge(VerticalBitRectangle.convertFrom(bitArray));
     }
 
     public boolean isLargerThan(VerticalBitRectangle other) {

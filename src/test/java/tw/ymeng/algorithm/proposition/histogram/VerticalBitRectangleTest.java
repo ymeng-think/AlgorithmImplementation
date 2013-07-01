@@ -38,10 +38,10 @@ public class VerticalBitRectangleTest {
 
     @Test
     public void should_intersect_bit_rectangle_with_smaller_bit_array() {
-        boolean[] bitArray = {X, O, O, X};
+        boolean[] bitArray = {X, O, O, O, X};
         VerticalBitRectangle bitRectangle = VerticalBitRectangle.convertFrom(bitArray);
 
-        VerticalBitRectangle intersected = bitRectangle.merge(new boolean[]{X, O, X, X});
+        VerticalBitRectangle intersected = bitRectangle.merge(new boolean[]{X, O, X, X, X});
 
         assertThat(intersected.area(), is(2L));
     }
@@ -100,10 +100,19 @@ public class VerticalBitRectangleTest {
     }
 
     @Test
-    public void should_intersect_holder_with_bit_array() {
+    public void should_intersect_holder_with_bit_array_that_start_with_1() {
         VerticalBitRectangle holder = VerticalBitRectangle.holder(3);
 
         VerticalBitRectangle intersected = holder.merge(new boolean[]{O, X, X});
+
+        assertThat(intersected.area(), is(1L));
+    }
+
+    @Test
+    public void should_intersect_holder_with_bit_array_that_start_with_0() {
+        VerticalBitRectangle holder = VerticalBitRectangle.holder(3);
+
+        VerticalBitRectangle intersected = holder.merge(new boolean[]{X, X, O});
 
         assertThat(intersected.area(), is(1L));
     }
