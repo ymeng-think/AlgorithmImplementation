@@ -35,6 +35,31 @@ class VerticalBitRectangle {
         return new VerticalBitRectangle(newStart, newWidth, newHeight);
     }
 
+    public boolean isLargerThan(VerticalBitRectangle other) {
+        return this.area() > other.area();
+    }
+
+    public VerticalBitRectangle merge(VerticalBitRectangle other) {
+        VerticalBitRectangle lower, upper;
+        if (this.start < other.width) {
+            lower = this;
+            upper = other;
+        } else {
+            lower = other;
+            upper = this;
+        }
+
+        if ((lower.start + lower.height) <= upper.start) {
+            return NULL;
+        }
+
+        int start = Math.max(lower.start, upper.start);
+        int height = Math.min(lower.start + lower.height, upper.start + upper.height) - start;
+        int width = lower.width + upper.height;
+
+        return new VerticalBitRectangle(start, width, height);
+    }
+
     public static VerticalBitRectangle convertFrom(boolean[] bitArray) {
         int start = -1;
         int height = 0;
@@ -53,9 +78,5 @@ class VerticalBitRectangle {
             height++;
         }
         return new VerticalBitRectangle(start, 1, height);
-    }
-
-    public boolean isLargerThan(VerticalBitRectangle other) {
-        return this.area() > other.area();
     }
 }

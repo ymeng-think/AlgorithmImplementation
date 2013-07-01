@@ -64,4 +64,34 @@ public class VerticalBitRectangleTest {
         assertTrue(bitRectangle1.isLargerThan(bitRectangle2));
     }
 
+    @Test
+    public void should_intersect_bit_rectangles_even_though_they_have_no_intersection() {
+        VerticalBitRectangle bitRectangle1 = new VerticalBitRectangle(0, 2, 2);
+        VerticalBitRectangle bitRectangle2 = new VerticalBitRectangle(2, 2, 2);
+
+        VerticalBitRectangle intersected = bitRectangle1.merge(bitRectangle2);
+
+        assertThat(intersected.area(), is(0L));
+    }
+
+    @Test
+    public void should_intersect_bit_rectangles_that_has_same_region() {
+        VerticalBitRectangle bitRectangle1 = new VerticalBitRectangle(1, 2, 2);
+        VerticalBitRectangle bitRectangle2 = new VerticalBitRectangle(1, 2, 2);
+
+        VerticalBitRectangle intersected = bitRectangle1.merge(bitRectangle2);
+
+        assertThat(intersected.area(), is(8L));
+    }
+
+    @Test
+    public void should_intersect_bit_rectangle_with_the_other_which_is_smaller() {
+        VerticalBitRectangle bitRectangle1 = new VerticalBitRectangle(0, 2, 4);
+        VerticalBitRectangle bitRectangle2 = new VerticalBitRectangle(1, 2, 2);
+
+        VerticalBitRectangle intersected = bitRectangle1.merge(bitRectangle2);
+
+        assertThat(intersected.area(), is(8L));
+    }
+
 }
