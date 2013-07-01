@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static tw.ymeng.algorithm.proposition.histogram.BitmapBuilder.O;
 import static tw.ymeng.algorithm.proposition.histogram.BitmapBuilder.X;
 
@@ -53,6 +54,14 @@ public class VerticalBitRectangleTest {
         VerticalBitRectangle intersected = bitRectangle.merge(new boolean[]{O, X, X, O});
 
         assertThat(intersected.area(), is(0L));
+    }
+
+    @Test
+    public void should_compare_area_size() {
+        VerticalBitRectangle bitRectangle1 = VerticalBitRectangle.convertFrom(new boolean[]{O, O, O, X});
+        VerticalBitRectangle bitRectangle2 = VerticalBitRectangle.convertFrom(new boolean[]{X, O, O, X});
+
+        assertTrue(bitRectangle1.isLargerThan(bitRectangle2));
     }
 
 }

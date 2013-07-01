@@ -54,4 +54,8 @@ class VerticalBitRectangle {
         }
         return new VerticalBitRectangle(start, 1, height);
     }
+
+    public boolean isLargerThan(VerticalBitRectangle other) {
+        return this.area() > other.area();
+    }
 }
