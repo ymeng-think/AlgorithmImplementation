@@ -55,7 +55,7 @@ class VerticalBitRectangle {
 
         int start = Math.max(lower.start, upper.start);
         int height = Math.min(lower.start + lower.height, upper.start + upper.height) - start;
-        int width = lower.width + upper.height;
+        int width = lower.width + upper.width;
 
         return new VerticalBitRectangle(start, width, height);
     }
