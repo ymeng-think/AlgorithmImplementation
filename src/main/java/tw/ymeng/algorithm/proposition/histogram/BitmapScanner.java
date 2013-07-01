@@ -1,6 +1,6 @@
 package tw.ymeng.algorithm.proposition.histogram;
 
-public class BitmapScanner {
+class BitmapScanner {
 
     private final VerticalBitRectangle holder;
     private final boolean[][] bitmap;

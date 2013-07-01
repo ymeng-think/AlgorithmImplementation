@@ -21,16 +21,18 @@ import static tw.ymeng.algorithm.proposition.histogram.Max.max;
 * */
 public class Histogram {
 
-    private static final int WIDTH = 1;
-    private final int[] heights;
     private final boolean[][] bitmap;
 
     public Histogram(int... heights) {
-        this.heights = heights;
         bitmap = bitmap(heights.length, max(heights)).with(heights).build();
     }
 
-    public int getMaxArea() {
-        return heights[0] * WIDTH;
+    public long getMaxArea() {
+        return new BitmapScanner(bitmap).getMaxRectangle().area();
+    }
+
+    public static void main(String[] args) {
+        Histogram histogram = new Histogram(new int[]{2, 1, 5, 6, 2, 3});
+        System.out.println("Max rectangle area is " + histogram.getMaxArea());
     }
 }
