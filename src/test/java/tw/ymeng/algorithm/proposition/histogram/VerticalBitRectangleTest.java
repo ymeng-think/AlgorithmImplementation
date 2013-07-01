@@ -31,7 +31,7 @@ public class VerticalBitRectangleTest {
         boolean[] bitArray = {X, O, O, X};
         VerticalBitRectangle bitRectangle = VerticalBitRectangle.convertFrom(bitArray);
 
-        VerticalBitRectangle intersected = bitRectangle.merge(new boolean[]{O, O, O, O});
+        VerticalBitRectangle intersected = bitRectangle.intersect(new boolean[]{O, O, O, O});
 
         assertThat(intersected.area(), is(4L));
     }
@@ -41,7 +41,7 @@ public class VerticalBitRectangleTest {
         boolean[] bitArray = {X, O, O, O, X};
         VerticalBitRectangle bitRectangle = VerticalBitRectangle.convertFrom(bitArray);
 
-        VerticalBitRectangle intersected = bitRectangle.merge(new boolean[]{X, O, X, X, X});
+        VerticalBitRectangle intersected = bitRectangle.intersect(new boolean[]{X, O, X, X, X});
 
         assertThat(intersected.area(), is(2L));
     }
@@ -51,7 +51,7 @@ public class VerticalBitRectangleTest {
         boolean[] bitArray = {X, O, O, X};
         VerticalBitRectangle bitRectangle = VerticalBitRectangle.convertFrom(bitArray);
 
-        VerticalBitRectangle intersected = bitRectangle.merge(new boolean[]{O, X, X, O});
+        VerticalBitRectangle intersected = bitRectangle.intersect(new boolean[]{O, X, X, O});
 
         assertThat(intersected.area(), is(0L));
     }
@@ -69,7 +69,7 @@ public class VerticalBitRectangleTest {
         VerticalBitRectangle bitRectangle1 = new VerticalBitRectangle(0, 2, 2);
         VerticalBitRectangle bitRectangle2 = new VerticalBitRectangle(2, 2, 2);
 
-        VerticalBitRectangle intersected = bitRectangle1.merge(bitRectangle2);
+        VerticalBitRectangle intersected = bitRectangle1.intersect(bitRectangle2);
 
         assertThat(intersected.area(), is(0L));
     }
@@ -79,7 +79,7 @@ public class VerticalBitRectangleTest {
         VerticalBitRectangle bitRectangle1 = new VerticalBitRectangle(1, 2, 2);
         VerticalBitRectangle bitRectangle2 = new VerticalBitRectangle(1, 2, 2);
 
-        VerticalBitRectangle intersected = bitRectangle1.merge(bitRectangle2);
+        VerticalBitRectangle intersected = bitRectangle1.intersect(bitRectangle2);
 
         assertThat(intersected.area(), is(8L));
     }
@@ -89,7 +89,7 @@ public class VerticalBitRectangleTest {
         VerticalBitRectangle bitRectangle1 = new VerticalBitRectangle(0, 2, 4);
         VerticalBitRectangle bitRectangle2 = new VerticalBitRectangle(1, 2, 2);
 
-        VerticalBitRectangle intersected = bitRectangle1.merge(bitRectangle2);
+        VerticalBitRectangle intersected = bitRectangle1.intersect(bitRectangle2);
 
         assertThat(intersected.area(), is(8L));
     }
@@ -103,7 +103,7 @@ public class VerticalBitRectangleTest {
     public void should_intersect_holder_with_bit_array_that_start_with_1() {
         VerticalBitRectangle holder = VerticalBitRectangle.holder(3);
 
-        VerticalBitRectangle intersected = holder.merge(new boolean[]{O, X, X});
+        VerticalBitRectangle intersected = holder.intersect(new boolean[]{O, X, X});
 
         assertThat(intersected.area(), is(1L));
     }
@@ -112,7 +112,7 @@ public class VerticalBitRectangleTest {
     public void should_intersect_holder_with_bit_array_that_start_with_0() {
         VerticalBitRectangle holder = VerticalBitRectangle.holder(3);
 
-        VerticalBitRectangle intersected = holder.merge(new boolean[]{X, X, O});
+        VerticalBitRectangle intersected = holder.intersect(new boolean[]{X, X, O});
 
         assertThat(intersected.area(), is(1L));
     }

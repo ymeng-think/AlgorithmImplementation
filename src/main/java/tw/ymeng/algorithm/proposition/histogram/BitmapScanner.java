@@ -32,7 +32,7 @@ class BitmapScanner {
 
         VerticalBitRectangle maxLeftBorderArea = holder, leftBorderArea = holder;
         for (int i = center; i >= left; i--) {
-            leftBorderArea = leftBorderArea.merge(bitmap[i]);
+            leftBorderArea = leftBorderArea.intersect(bitmap[i]);
             if (leftBorderArea.isLargerThan(maxLeftBorderArea)) {
                 maxLeftBorderArea = leftBorderArea;
             }
@@ -40,13 +40,13 @@ class BitmapScanner {
 
         VerticalBitRectangle maxRightBorderArea = holder, rightBorderArea = holder;
         for (int i = center + 1; i <= right; i++) {
-            rightBorderArea = rightBorderArea.merge(bitmap[i]);
+            rightBorderArea = rightBorderArea.intersect(bitmap[i]);
             if (rightBorderArea.isLargerThan(maxRightBorderArea)) {
                 maxRightBorderArea = rightBorderArea;
             }
         }
 
-        return max3(maxLeftArea, maxRightArea, maxLeftBorderArea.merge(maxRightBorderArea));
+        return max3(maxLeftArea, maxRightArea, maxLeftBorderArea.intersect(maxRightBorderArea));
     }
 
     private VerticalBitRectangle max3(VerticalBitRectangle a, VerticalBitRectangle b, VerticalBitRectangle c) {

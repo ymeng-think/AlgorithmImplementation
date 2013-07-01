@@ -17,15 +17,11 @@ class VerticalBitRectangle {
         return width * height;
     }
 
-    public VerticalBitRectangle merge(boolean[] bitArray) {
-        return this.merge(VerticalBitRectangle.convertFrom(bitArray));
+    public VerticalBitRectangle intersect(boolean[] bitArray) {
+        return this.intersect(VerticalBitRectangle.convertFrom(bitArray));
     }
 
-    public boolean isLargerThan(VerticalBitRectangle other) {
-        return this.area() > other.area();
-    }
-
-    public VerticalBitRectangle merge(VerticalBitRectangle other) {
+    public VerticalBitRectangle intersect(VerticalBitRectangle other) {
         VerticalBitRectangle lower, upper;
         if (this.start < other.width) {
             lower = this;
@@ -44,6 +40,10 @@ class VerticalBitRectangle {
         int width = lower.width + upper.width;
 
         return new VerticalBitRectangle(start, width, height);
+    }
+
+    public boolean isLargerThan(VerticalBitRectangle other) {
+        return this.area() > other.area();
     }
 
     public static VerticalBitRectangle convertFrom(boolean[] bitArray) {
