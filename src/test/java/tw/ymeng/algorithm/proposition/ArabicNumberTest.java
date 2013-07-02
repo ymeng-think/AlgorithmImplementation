@@ -43,6 +43,20 @@ public class ArabicNumberTest {
     }
 
     @Test
+    public void should_append_carry_when_number_is_integral_multiple_of_a_hundred_thousand() {
+        ArabicNumber number = new ArabicNumber(200000);
+
+        assertThat(number.toChineseWord(), is("贰拾万"));
+    }
+
+    @Test
+    public void should_append_carry_when_number_is_integral_multiple_of_a_thousand_million() {
+        ArabicNumber number = new ArabicNumber(2000000000);
+
+        assertThat(number.toChineseWord(), is("贰拾亿"));
+    }
+
+    @Test
     public void should_skip_zero_when_convert_number_that_is_less_than_10000() {
         ArabicNumber number = new ArabicNumber(2003);
 

@@ -8,6 +8,8 @@ public class ArabicNumber {
     private static final String[] CARRY_LIST = {"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟"};
     private static final String ZERO = "零";
     private static final String TEN = "壹拾";
+    public static final char TEN_THOUSAND = '万';
+    public static final char HUNDRED_MILLION = '亿';
 
     private int number;
 
@@ -34,6 +36,13 @@ public class ArabicNumber {
         boolean containsZero = false;
         while (!numberElements.empty()) {
             Integer digit = numberElements.pop();
+
+            if (needToAppendHundredMillionCarry(digit, numberElements.size())) {
+                word.append(HUNDRED_MILLION);
+            } else if (needToAppendTenThousandCarry(word, digit, numberElements.size())) {
+                word.append(TEN_THOUSAND);
+            }
+
             if (digit == 0) {
                 containsZero = true;
                 continue;
@@ -52,6 +61,14 @@ public class ArabicNumber {
         chineseWord = ignore1X(chineseWord);
 
         return chineseWord;
+    }
+
+    private boolean needToAppendHundredMillionCarry(Integer currentDigit, int remainderSize) {
+        return currentDigit == 0 && remainderSize == 8;
+    }
+
+    private boolean needToAppendTenThousandCarry(StringBuilder word, Integer currentDigit, int remainderSize) {
+        return currentDigit == 0 && remainderSize == 4 && word.charAt(word.length() - 1) != HUNDRED_MILLION;
     }
 
     private String ignore1X(String chineseWord) {
