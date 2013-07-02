@@ -18,6 +18,13 @@ public class ArabicNumberTest {
     public void should_convert_decimal_number_to_chinese_word() {
         ArabicNumber number = new ArabicNumber(123);
 
-        assertThat(number.toChineseWord(), is("壹伯贰拾叁"));
+        assertThat(number.toChineseWord(), is("壹佰贰拾叁"));
+    }
+
+    @Test
+    public void should_convert_very_large_decimal_number_to_chinese_word() {
+        ArabicNumber number = new ArabicNumber(1987654321);
+
+        assertThat(number.toChineseWord(), is("壹拾玖亿捌仟柒佰陆拾伍万肆仟叁佰贰拾壹"));
     }
 }

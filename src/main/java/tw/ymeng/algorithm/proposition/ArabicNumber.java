@@ -5,7 +5,7 @@ import java.util.Stack;
 public class ArabicNumber {
 
     private static final String[] chineseDigits = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
-    private static final String[] carryList = {"", "拾", "伯", "仟"};
+    private static final String[] carryList = {"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟"};
 
     private int number;
 
