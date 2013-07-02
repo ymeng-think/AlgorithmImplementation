@@ -1,7 +1,11 @@
-package tw.ymeng.algorithm.proposition;
+package tw.ymeng.algorithm.interview;
 
 import java.util.Stack;
 
+/**
+ * Question (from Amazon):
+ *  数字转成汉字
+ * */
 public class ArabicNumber {
 
     private static final char[] CHINESE_DIGITS = {'零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'};
