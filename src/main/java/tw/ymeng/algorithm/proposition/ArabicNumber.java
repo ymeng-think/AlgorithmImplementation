@@ -11,18 +11,18 @@ public class ArabicNumber {
     public static final char TEN_THOUSAND = '万';
     public static final char HUNDRED_MILLION = '亿';
 
-    private int number;
+    private long number;
 
-    public ArabicNumber(int number) {
+    public ArabicNumber(long number) {
         this.number = number;
     }
 
     public String toChineseWord() {
-        int decimalNumber = number;
+        long decimalNumber = number;
 
         Stack<Integer> numberElements = new Stack<Integer>();
         while (decimalNumber != 0) {
-            numberElements.push(decimalNumber % 10);
+            numberElements.push((int)(decimalNumber % 10));
 
             decimalNumber /= 10;
         }

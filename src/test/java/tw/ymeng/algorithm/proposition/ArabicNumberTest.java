@@ -65,8 +65,8 @@ public class ArabicNumberTest {
 
     @Test
     public void should_skip_zero_when_convert_number_that_is_larger_than_10000() {
-        ArabicNumber number = new ArabicNumber(1000100203);
+        ArabicNumber number = new ArabicNumber(101000100203L);
 
-        assertThat(number.toChineseWord(), is("拾亿零壹拾万零贰佰零叁"));
+        assertThat(number.toChineseWord(), is("壹仟零壹拾亿零壹拾万零贰佰零叁"));
     }
 }
