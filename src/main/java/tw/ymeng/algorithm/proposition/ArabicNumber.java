@@ -6,6 +6,7 @@ public class ArabicNumber {
 
     private static final String[] chineseDigits = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
     private static final String[] carryList = {"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟"};
+    private static final String ZERO = "零";
 
     private int number;
 
@@ -29,8 +30,20 @@ public class ArabicNumber {
     private String buildChineseWord(Stack<Integer> numberElements) {
         StringBuilder word = new StringBuilder();
 
+        boolean containsZero = false;
         while (!numberElements.empty()) {
-            word.append(chineseDigits[numberElements.pop()]);
+            Integer digit = numberElements.pop();
+            if (digit == 0) {
+                containsZero = true;
+                continue;
+            }
+
+            if (containsZero) {
+                word.append(ZERO);
+                containsZero = false;
+            }
+
+            word.append(chineseDigits[digit]);
             word.append(carryList[numberElements.size()]);
         }
 
