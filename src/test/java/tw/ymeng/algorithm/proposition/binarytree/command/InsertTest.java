@@ -1,6 +1,7 @@
 package tw.ymeng.algorithm.proposition.binarytree.command;
 
 import org.junit.Test;
+import tw.ymeng.algorithm.proposition.Command;
 import tw.ymeng.algorithm.proposition.binarytree.Node;
 
 import static org.hamcrest.CoreMatchers.is;

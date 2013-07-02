@@ -1,5 +1,6 @@
 package tw.ymeng.algorithm.proposition.binarytree.command;
 
+import tw.ymeng.algorithm.proposition.Command;
 import tw.ymeng.algorithm.proposition.binarytree.Node;
 
 public class Insert implements Command {

@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.proposition.binarytree.command;
+package tw.ymeng.algorithm.proposition;
 
 import tw.ymeng.algorithm.proposition.binarytree.Node;
 
