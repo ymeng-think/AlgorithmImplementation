@@ -4,8 +4,8 @@ import java.util.Stack;
 
 public class ArabicNumber {
 
-    private static final String[] chineseDigits = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
-    private static final String[] carryList = {"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟"};
+    private static final String[] CHINESE_DIGITS = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
+    private static final String[] CARRY_LIST = {"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟"};
     private static final String ZERO = "零";
 
     private int number;
@@ -43,8 +43,8 @@ public class ArabicNumber {
                 containsZero = false;
             }
 
-            word.append(chineseDigits[digit]);
-            word.append(carryList[numberElements.size()]);
+            word.append(CHINESE_DIGITS[digit]);
+            word.append(CARRY_LIST[numberElements.size()]);
         }
 
         return word.toString();
