@@ -17,11 +17,11 @@ public class CheckCircle implements Command<Boolean> {
      * */
     @Override
     public Boolean execute() {
-        LinkedList first = start, second = start;
-        while (second.next() != null && second.next().next() != null) {
-            second = second.next().next();
-            first = first.next();
-            if (second == first) {
+        LinkedList slow = start, fast = start;
+        while (fast.next() != null && fast.next().next() != null) {
+            fast = fast.next().next();
+            slow = slow.next();
+            if (fast == slow) {
                 return true;
             }
         }
