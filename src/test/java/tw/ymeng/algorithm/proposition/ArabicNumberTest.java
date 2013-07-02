@@ -29,6 +29,13 @@ public class ArabicNumberTest {
     }
 
     @Test
+    public void should_convert_decimal_number_that_ends_with_zero() {
+        ArabicNumber number = new ArabicNumber(100);
+
+        assertThat(number.toChineseWord(), is("壹佰"));
+    }
+
+    @Test
     public void should_skip_zero_when_convert_number_that_is_less_than_10000() {
         ArabicNumber number = new ArabicNumber(2003);
 
