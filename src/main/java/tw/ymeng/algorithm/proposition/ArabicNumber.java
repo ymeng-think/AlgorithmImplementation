@@ -8,8 +8,8 @@ public class ArabicNumber {
     private static final String[] CARRY_LIST = {"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟"};
     private static final char ZERO = '零';
     private static final String TEN = "壹拾";
-    public static final char TEN_THOUSAND = '万';
-    public static final char HUNDRED_MILLION = '亿';
+    private static final char TEN_THOUSAND = '万';
+    private static final char HUNDRED_MILLION = '亿';
 
     private long number;
 
