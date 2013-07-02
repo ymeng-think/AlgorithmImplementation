@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.proposition.array;
+package tw.ymeng.algorithm.proposition.linkedlist;
 
 public class LinkedList {
 

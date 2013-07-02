@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.proposition.array;
+package tw.ymeng.algorithm.proposition.linkedlist;
 
 import java.util.HashMap;
 import java.util.Map;
