@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.sorting.util;
+package tw.ymeng.algorithm.proposition.array.sorting.util;
 
 public interface MergeStrategy {
 

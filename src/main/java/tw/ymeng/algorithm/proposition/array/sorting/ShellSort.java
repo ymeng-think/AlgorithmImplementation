@@ -1,6 +1,6 @@
-package tw.ymeng.algorithm.sorting;
+package tw.ymeng.algorithm.proposition.array.sorting;
 
-import static tw.ymeng.algorithm.sorting.util.Mover.move;
+import static tw.ymeng.algorithm.proposition.array.sorting.util.Mover.move;
 
 /*
 *

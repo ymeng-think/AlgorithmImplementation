@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.search;
+package tw.ymeng.algorithm.proposition.array.search;
 
 /*
 *

@@ -1,6 +1,6 @@
 package tw.ymeng.algorithm.proposition;
 
-import tw.ymeng.algorithm.sorting.HeapSort;
+import tw.ymeng.algorithm.proposition.array.sorting.HeapSort;
 
 /*
 * 输入一个数组和一个数字，在数组中查找两个数，使得它们的和正好是输入的那个数字。

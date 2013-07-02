@@ -1,8 +1,8 @@
-package tw.ymeng.algorithm.sorting;
+package tw.ymeng.algorithm.proposition.array.sorting;
 
-import tw.ymeng.algorithm.sorting.util.MergeStrategy;
-import tw.ymeng.algorithm.sorting.util.MergeWithGuard;
-import tw.ymeng.algorithm.sorting.util.MergeWithoutGuard;
+import tw.ymeng.algorithm.proposition.array.sorting.util.MergeStrategy;
+import tw.ymeng.algorithm.proposition.array.sorting.util.MergeWithGuard;
+import tw.ymeng.algorithm.proposition.array.sorting.util.MergeWithoutGuard;
 
 /*
 * 归并排序

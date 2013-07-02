@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.sorting;
+package tw.ymeng.algorithm.proposition.array.sorting;
 
 /**
  * 快速排序
