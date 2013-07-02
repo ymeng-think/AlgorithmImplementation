@@ -3,9 +3,11 @@ package tw.ymeng.algorithm.interview;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/***********************************************************************************************************************
+* Question (From Amazon):
+*
 * Find common elements or intersection in a 2D array.
-* */
+* *********************************************************************************************************************/
 public class CommonElementsIn2DArray {
 
     public int[] findCommonElements(int[][] array) {
