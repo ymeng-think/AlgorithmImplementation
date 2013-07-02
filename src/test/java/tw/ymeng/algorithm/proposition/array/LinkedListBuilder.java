@@ -12,7 +12,8 @@ public class LinkedListBuilder {
     }
 
     private LinkedList convertFrom(int[] array) {
-        LinkedList last = newLinkedList(array[0]);
+        LinkedList first = newLinkedList(array[0]);
+        LinkedList last = first;
 
         for (int i = 1; i < array.length; i++) {
             LinkedList node = null;
@@ -27,7 +28,7 @@ public class LinkedListBuilder {
             last = node;
         }
 
-        return last;
+        return first;
     }
 
     private LinkedList retrieve(int data) {

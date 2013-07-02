@@ -2,7 +2,9 @@ package tw.ymeng.algorithm.proposition.array;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static tw.ymeng.algorithm.proposition.array.LinkedListBuilder.build;
 
@@ -20,5 +22,12 @@ public class LinkedListTest {
         LinkedList linkedList = build(new int[]{1, 2, 3});
 
         assertFalse(linkedList.hasCircle());
+    }
+
+    @Test
+    public void should_get_circle_length() {
+        LinkedList linkedList = build(new int[]{1, 2, 3, 1});
+
+        assertThat(linkedList.getCircleLength(), is(3));
     }
 }

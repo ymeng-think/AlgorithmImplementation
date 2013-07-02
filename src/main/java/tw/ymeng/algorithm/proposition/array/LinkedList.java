@@ -37,4 +37,15 @@ public class LinkedList {
         return false;
     }
 
+    public int getCircleLength() {
+        int length = 1;
+        LinkedList current = this;
+
+        while (current.next() != this) {
+            length++;
+            current = current.next();
+        }
+
+        return length;
+    }
 }
