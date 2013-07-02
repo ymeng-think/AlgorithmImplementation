@@ -1,6 +1,7 @@
 package tw.ymeng.algorithm.proposition.linkedlist;
 
 import tw.ymeng.algorithm.proposition.linkedlist.command.CheckCircle;
+import tw.ymeng.algorithm.proposition.linkedlist.command.GetCircleLength;
 
 public class LinkedList {
 
@@ -28,14 +29,6 @@ public class LinkedList {
     }
 
     public int getCircleLength() {
-        int length = 1;
-        LinkedList current = this;
-
-        while (current.next() != this) {
-            length++;
-            current = current.next();
-        }
-
-        return length;
+        return new GetCircleLength(this).execute();
     }
 }
