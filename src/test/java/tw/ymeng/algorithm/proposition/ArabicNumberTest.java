@@ -15,6 +15,13 @@ public class ArabicNumberTest {
     }
 
     @Test
+    public void should_ignore_the_first_character_when_number_start_with_1X() {
+        ArabicNumber number = new ArabicNumber(10);
+
+        assertThat(number.toChineseWord(), is("拾"));
+    }
+
+    @Test
     public void should_convert_decimal_number_to_chinese_word() {
         ArabicNumber number = new ArabicNumber(123);
 
@@ -25,7 +32,7 @@ public class ArabicNumberTest {
     public void should_convert_very_large_decimal_number_to_chinese_word() {
         ArabicNumber number = new ArabicNumber(1987654321);
 
-        assertThat(number.toChineseWord(), is("壹拾玖亿捌仟柒佰陆拾伍万肆仟叁佰贰拾壹"));
+        assertThat(number.toChineseWord(), is("拾玖亿捌仟柒佰陆拾伍万肆仟叁佰贰拾壹"));
     }
 
     @Test

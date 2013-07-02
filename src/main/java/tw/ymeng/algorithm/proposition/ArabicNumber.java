@@ -7,6 +7,7 @@ public class ArabicNumber {
     private static final String[] CHINESE_DIGITS = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
     private static final String[] CARRY_LIST = {"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟"};
     private static final String ZERO = "零";
+    private static final String TEN = "壹拾";
 
     private int number;
 
@@ -47,6 +48,13 @@ public class ArabicNumber {
             word.append(CARRY_LIST[numberElements.size()]);
         }
 
-        return word.toString();
+        String chineseWord = word.toString();
+        chineseWord = ignore1X(chineseWord);
+
+        return chineseWord;
+    }
+
+    private String ignore1X(String chineseWord) {
+        return chineseWord.startsWith(TEN) ? chineseWord.substring(1) : chineseWord;
     }
 }
