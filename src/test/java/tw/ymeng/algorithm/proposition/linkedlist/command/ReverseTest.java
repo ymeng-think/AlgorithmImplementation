@@ -11,7 +11,7 @@ public class ReverseTest {
 
     @Test
     public void should_reverse_linked_list() {
-        LinkedList root = build(new int[]{1, 2, 3, 4});
+        LinkedList root = build(1, 2, 3, 4);
 
         LinkedList reversed = root.reverse();
 

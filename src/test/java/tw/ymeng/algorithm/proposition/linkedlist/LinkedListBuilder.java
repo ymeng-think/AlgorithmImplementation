@@ -7,7 +7,7 @@ public class LinkedListBuilder {
 
     private Map<Integer, LinkedList> pool = new HashMap<Integer, LinkedList>();
 
-    public static LinkedList build(int[] array) {
+    public static LinkedList build(int... array) {
         return new LinkedListBuilder().convertFrom(array);
     }
 
