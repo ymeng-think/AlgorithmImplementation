@@ -22,26 +22,26 @@ public class ArabicNumber {
     }
 
     public String toChineseWord() {
-        Stack<Integer> numberElements = extractNumberElements(number);
+        Stack<Character> numberElements = extractNumberElements(number);
         return buildChineseWord(numberElements);
     }
 
-    private Stack<Integer> extractNumberElements(long decimalNumber) {
-        Stack<Integer> numberElements = new Stack<Integer>();
+    private Stack<Character> extractNumberElements(long decimalNumber) {
+        Stack<Character> numberElements = new Stack<Character>();
         while (decimalNumber != 0) {
-            numberElements.push((int)(decimalNumber % 10));
+            numberElements.push((char)(decimalNumber % 10));
 
             decimalNumber /= 10;
         }
         return numberElements;
     }
 
-    private String buildChineseWord(Stack<Integer> numberElements) {
+    private String buildChineseWord(Stack<Character> numberElements) {
         StringBuilder word = new StringBuilder();
 
         boolean containsZero = false;
         while (!numberElements.empty()) {
-            Integer digit = numberElements.pop();
+            char digit = numberElements.pop();
 
             if (needToAppendHundredMillionCarry(digit, numberElements.size())) {
                 word.append(HUNDRED_MILLION);
@@ -69,11 +69,11 @@ public class ArabicNumber {
         return chineseWord;
     }
 
-    private boolean needToAppendHundredMillionCarry(Integer currentDigit, int remainderSize) {
+    private boolean needToAppendHundredMillionCarry(char currentDigit, int remainderSize) {
         return currentDigit == 0 && remainderSize == 8;
     }
 
-    private boolean needToAppendTenThousandCarry(StringBuilder word, Integer currentDigit, int remainderSize) {
+    private boolean needToAppendTenThousandCarry(StringBuilder word, char currentDigit, int remainderSize) {
         return currentDigit == 0 && remainderSize == 4 && word.charAt(word.length() - 1) != HUNDRED_MILLION;
     }
 
