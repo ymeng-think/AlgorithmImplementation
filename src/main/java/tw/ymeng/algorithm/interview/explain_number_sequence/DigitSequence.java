@@ -13,11 +13,11 @@ class DigitSequence {
     public DigitSequence add(char digit) {
         if (!sequence.containsKey(digit)) {
             sequence.put(digit, 1);
+            order.add(digit);
         } else {
             int counter = sequence.get(digit);
             sequence.put(digit, counter + 1);
         }
-        order.add(digit);
 
         return this;
     }
@@ -31,7 +31,7 @@ class DigitSequence {
         StringBuilder text = new StringBuilder();
 
         for (char digit : order) {
-            text.append(digit).append(sequence.get(digit));
+            text.append(sequence.get(digit)).append(digit);
         }
 
         return text.toString();

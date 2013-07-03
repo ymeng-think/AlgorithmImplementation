@@ -25,8 +25,15 @@ public class DigitSequenceTest {
 
     @Test
     public void should_convert_to_string() {
+        sequence.add('1').add('2');
+
+        assertThat(sequence.toString(), is("1112"));
+    }
+
+    @Test
+    public void should_output_string_in_order_of_added_digits() {
         sequence.add('2').add('1');
 
-        assertThat(sequence.toString(), is("2111"));
+        assertThat(sequence.toString(), is("1211"));
     }
 }
