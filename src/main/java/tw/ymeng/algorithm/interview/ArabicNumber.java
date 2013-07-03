@@ -22,16 +22,18 @@ public class ArabicNumber {
     }
 
     public String toChineseWord() {
-        long decimalNumber = number;
+        Stack<Integer> numberElements = extractNumberElements(number);
+        return buildChineseWord(numberElements);
+    }
 
+    private Stack<Integer> extractNumberElements(long decimalNumber) {
         Stack<Integer> numberElements = new Stack<Integer>();
         while (decimalNumber != 0) {
             numberElements.push((int)(decimalNumber % 10));
 
             decimalNumber /= 10;
         }
-
-        return buildChineseWord(numberElements);
+        return numberElements;
     }
 
     private String buildChineseWord(Stack<Integer> numberElements) {
