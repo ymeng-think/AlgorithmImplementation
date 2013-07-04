@@ -13,8 +13,11 @@ public class AllPermutationWithoutDuplicates implements PermutationStrategy {
 
     @Override
     public void permutate(String word, int start, int length) {
-        int end = start + length - 1;
-        permutate(word.toCharArray(), start, end);
+        for (int i = start, end = start + length - 1; end < word.length(); i++, end = i + length - 1) {
+            String subWord = word.substring(i, end + 1);
+            char[] chars = subWord.toCharArray();
+            permutate(chars, 0, chars.length - 1);
+        }
     }
 
     @Override

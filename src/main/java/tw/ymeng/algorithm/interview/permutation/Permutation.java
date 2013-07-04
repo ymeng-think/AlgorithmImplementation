@@ -13,14 +13,15 @@ import java.util.List;
  * */
 public class Permutation implements Recorder {
 
-    public static final Permutation PermutationWithoutDuplicates
-            = new Permutation(new AllPermutationWithoutDuplicates());
-
     private PermutationStrategy strategy;
     private List<String> words = new ArrayList<String>();
 
     private Permutation(PermutationStrategy strategy) {
         this.strategy = strategy;
+    }
+
+    public static Permutation permutationWithoutDuplicates() {
+        return new Permutation(new AllPermutationWithoutDuplicates());
     }
 
     public void permutate(String word, int start, int length) {
