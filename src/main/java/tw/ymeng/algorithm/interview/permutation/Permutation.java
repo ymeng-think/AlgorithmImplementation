@@ -1,6 +1,6 @@
 package tw.ymeng.algorithm.interview.permutation;
 
-import tw.ymeng.algorithm.interview.permutation.strategy.AllPermutationWithoutDuplicates;
+import tw.ymeng.algorithm.interview.permutation.strategy.RecursiveAllPermutation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +20,8 @@ public class Permutation implements Recorder {
         this.strategy = strategy;
     }
 
-    public static Permutation permutationWithoutDuplicates() {
-        return new Permutation(new AllPermutationWithoutDuplicates());
+    public static Permutation permutationWithRecursion() {
+        return new Permutation(new RecursiveAllPermutation());
     }
 
     public void permutate(String word, int start, int length) {
