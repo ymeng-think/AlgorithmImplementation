@@ -9,8 +9,7 @@ public class FindNToLastNode implements Command<Integer> {
     private int n;
 
     public FindNToLastNode(LinkedList linkedList, int n) {
-        this.root = new LinkedList(Integer.MIN_VALUE);
-        this.root.next(linkedList);
+        this.root = insertRoot(linkedList);
         this.n = n;
     }
 
@@ -40,5 +39,12 @@ public class FindNToLastNode implements Command<Integer> {
         }
 
         return p2.data();
+    }
+
+    private LinkedList insertRoot(LinkedList linkedList) {
+        LinkedList root = new LinkedList(Integer.MIN_VALUE);
+        root.next(linkedList);
+
+        return root;
     }
 }
