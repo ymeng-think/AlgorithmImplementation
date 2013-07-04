@@ -1,6 +1,7 @@
 package tw.ymeng.algorithm.proposition.linkedlist;
 
 import org.junit.Test;
+import tw.ymeng.algorithm.proposition.linkedlist.command.FindNToLastNode;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -31,5 +32,15 @@ public class LinkedListTest {
         LinkedList reversed = root.reverse();
 
         assertThat(reversed, as(4, 3, 2, 1));
+    }
+
+    @Test
+    public void should_find_n_to_last_node() {
+        LinkedList linkedList = build(1, 2, 3, 4, 5, 6);
+        FindNToLastNode command = new FindNToLastNode(linkedList, 3);
+
+        int nodeData = command.execute();
+
+        assertThat(nodeData, is(4));
     }
 }

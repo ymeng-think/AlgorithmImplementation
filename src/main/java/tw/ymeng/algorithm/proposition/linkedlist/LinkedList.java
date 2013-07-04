@@ -2,6 +2,7 @@ package tw.ymeng.algorithm.proposition.linkedlist;
 
 import sun.jvm.hotspot.utilities.ReversePtrs;
 import tw.ymeng.algorithm.proposition.linkedlist.command.CheckCircle;
+import tw.ymeng.algorithm.proposition.linkedlist.command.FindNToLastNode;
 import tw.ymeng.algorithm.proposition.linkedlist.command.GetCircleLength;
 import tw.ymeng.algorithm.proposition.linkedlist.command.Reverse;
 
@@ -36,5 +37,9 @@ public class LinkedList {
 
     public LinkedList reverse() {
         return new Reverse(this).execute();
+    }
+
+    public int getNToLastNode(int n) {
+        return new FindNToLastNode(this, n).execute();
     }
 }
