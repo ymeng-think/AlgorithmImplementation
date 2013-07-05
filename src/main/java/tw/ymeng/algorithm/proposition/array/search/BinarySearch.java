@@ -14,15 +14,15 @@ public class BinarySearch {
     }
 
     public int search(int item) {
-        return search(0, items.length - 1, item);
+        return search(item, 0, items.length - 1);
     }
 
     public int searchPrevItem(int item) {
-        return searchPrevItem(0, items.length - 1, item);
+        return searchPrevItem(item, 0, items.length - 1);
     }
 
     public int searchNextItem(int item) {
-        return searchNextItem(0, items.length - 1, item);
+        return searchNextItem(item, 0, items.length - 1);
     }
 
     public int searchInRange(int target, int start, int end) {
@@ -46,54 +46,54 @@ public class BinarySearch {
         return -1;
     }
 
-    private int search(int low, int high, int item) {
-        while (low < high) {
-            int mid = low + (high - low) / 2;
+    private int search(int target, int start, int end) {
+        while (start < end) {
+            int mid = start + (end - start) / 2;
 
-            if (items[mid] == item) {
+            if (items[mid] == target) {
                 return mid;
-            } else if (items[mid] > item) {
-                high = mid - 1;
+            } else if (items[mid] > target) {
+                end = mid - 1;
             } else {
-                low = mid + 1;
+                start = mid + 1;
             }
         }
 
         return -1;
     }
 
-    private int searchPrevItem(int low, int high, int item) {
-        while (low < high) {
-            int mid = low + (high - low) / 2;
+    private int searchPrevItem(int target, int start, int end) {
+        while (start < end) {
+            int mid = start + (end - start) / 2;
 
-            if (items[mid] >= item) {
-                high = mid;
+            if (items[mid] >= target) {
+                end = mid;
             } else {
-                low = mid + 1;
+                start = mid + 1;
             }
         }
 
-        if (low - 1 >= 0) {
-            return low - 1;
+        if (start - 1 >= 0) {
+            return start - 1;
         }
 
         return -1;
     }
 
-    private int searchNextItem(int low, int high, int item) {
-        int length = high + 1;
-        while (low < high) {
-            int mid = low + (high - low + 1) / 2;
+    private int searchNextItem(int target, int start, int end) {
+        int length = end + 1;
+        while (start < end) {
+            int mid = start + (end - start + 1) / 2;
 
-            if (items[mid] <= item) {
-                low = mid;
+            if (items[mid] <= target) {
+                start = mid;
             } else {
-                high = mid - 1;
+                end = mid - 1;
             }
         }
 
-        if (high + 1 < length) {
-            return high + 1;
+        if (end + 1 < length) {
+            return end + 1;
         }
 
         return -1;
