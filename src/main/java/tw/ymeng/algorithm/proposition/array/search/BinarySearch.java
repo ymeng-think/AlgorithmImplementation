@@ -25,6 +25,27 @@ public class BinarySearch {
         return searchNextItem(0, items.length - 1, item);
     }
 
+    public int searchInRange(int target, int start, int end) {
+        int mid;
+        int left = start - 1;
+        int right = end + 1;
+
+        while (left + 1 != right) {
+            mid = left + (right - left) / 2;
+            if (items[mid] < target) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+
+        if (right <= end && items[right] == target) {
+            return right;
+        }
+
+        return -1;
+    }
+
     private int search(int low, int high, int item) {
         while (low < high) {
             int mid = low + (high - low) / 2;

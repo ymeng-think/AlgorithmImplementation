@@ -23,6 +23,13 @@ public class BinarySearchTest {
     }
 
     @Test
+    public void should_return_index_when_search_an_existed_item_in_a_section() {
+        BinarySearch algorithm = new BinarySearch(sortedItems);
+
+        assertEquals(3, algorithm.searchInRange(5, 3, 6));
+    }
+
+    @Test
     public void should_return_negative_when_search_UNEXISTED_item() {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
