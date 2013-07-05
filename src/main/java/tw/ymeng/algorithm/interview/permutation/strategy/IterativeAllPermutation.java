@@ -49,7 +49,7 @@ public class IterativeAllPermutation implements PermutationStrategy {
     }
 
     private void permutate(Character[] chars) {
-        QuickSort<Character> quickSort = new QuickSort(chars, new CharacterComparator());
+        QuickSort<Character> quickSort = new QuickSort<Character>(chars, new CharacterComparator());
         Character[] sorted = quickSort.sort();
 
         do {
