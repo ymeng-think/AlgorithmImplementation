@@ -3,6 +3,8 @@ package tw.ymeng.algorithm.interview.permutation.strategy;
 import tw.ymeng.algorithm.interview.permutation.PermutationStrategy;
 import tw.ymeng.algorithm.interview.permutation.Recorder;
 
+import static tw.ymeng.algorithm.utils.Swapper.swap;
+
 public class RecursiveAllPermutation implements PermutationStrategy {
 
     private Recorder recorder;
@@ -59,9 +61,4 @@ public class RecursiveAllPermutation implements PermutationStrategy {
         return true;
     }
 
-    private void swap(char[] chars, int index1, int index2) {
-        char temp = chars[index1];
-        chars[index1] = chars[index2];
-        chars[index2] = temp;
-    }
 }
