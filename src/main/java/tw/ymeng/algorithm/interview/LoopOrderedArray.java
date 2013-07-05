@@ -3,7 +3,7 @@ package tw.ymeng.algorithm.interview;
 import tw.ymeng.algorithm.proposition.array.search.BinarySearch;
 
 /**
- * 问题：
+ * 问题 (From Amazon)：
  *
  * 有一个循环有序数组A，如{7,8,9,0,1,2,3,4,5,6}，不知道其最小值的位置。
  * 那么如何从这样的数组中寻找一个特定的元素呢？
