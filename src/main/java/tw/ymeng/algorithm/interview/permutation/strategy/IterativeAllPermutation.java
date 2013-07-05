@@ -5,7 +5,7 @@ import tw.ymeng.algorithm.interview.permutation.Recorder;
 import tw.ymeng.algorithm.proposition.array.sorting.comparator.CharacterComparator;
 import tw.ymeng.algorithm.proposition.array.sorting.generics.QuickSort;
 
-import static tw.ymeng.algorithm.proposition.array.sorting.generics.Swapper.swap;
+import static tw.ymeng.algorithm.utils.Swapper.swap;
 
 public class IterativeAllPermutation implements PermutationStrategy {
 
