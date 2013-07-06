@@ -27,16 +27,13 @@ import java.util.Map;
 public class ShortestSummary {
 
     private final String[] description;
-    private final String[] keywords;
     private final Map<String,Integer> keywordMap;
     private final int[] keywordHitRecorder;
 
     public ShortestSummary(String description, String[] keywords) {
         this.description = breakIntoArray(description);
-        this.keywords = keywords;
-
-        keywordMap = buildKeywordsMap();
-        keywordHitRecorder = new int[keywords.length];
+        this.keywordMap = buildKeywordsMap(keywords);
+        this.keywordHitRecorder = new int[keywords.length];
     }
 
     public String extract() {
@@ -79,7 +76,7 @@ public class ShortestSummary {
     }
 
     private boolean keywordMapContains(String word) {
-        return keywordMap.containsKey(word);
+        return keywordMap.containsKey(ignoreCase(word));
     }
 
     private void appendToSummary(StringBuilder summary, int start, int end) {
@@ -92,7 +89,7 @@ public class ShortestSummary {
     }
 
     private int indexInKeywordMap(String word) {
-        return keywordMap.get(word);
+        return keywordMap.get(ignoreCase(word));
     }
 
     private void hitKeyword(int index) {
@@ -103,10 +100,10 @@ public class ShortestSummary {
         keywordHitRecorder[index]--;
     }
 
-    private Map<String, Integer> buildKeywordsMap() {
+    private Map<String, Integer> buildKeywordsMap(String[] keywords) {
         Map<String, Integer> map = new HashMap<String, Integer>();
         for (int i = 0; i < keywords.length; i++) {
-            map.put(keywords[i], i);
+            map.put(ignoreCase(keywords[i]), i);
         }
 
         return map;
@@ -120,6 +117,10 @@ public class ShortestSummary {
         }
 
         return true;
+    }
+
+    private static String ignoreCase(String word) {
+        return word.toLowerCase();
     }
 
     private static String[] breakIntoArray(String text) {
