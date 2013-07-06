@@ -36,13 +36,46 @@ public final class Division {
         if (dividend < divisor) {
             return 0;
         }
+
         int k = 0, c = divisor;
 
-        for ( ; dividend >= c; c <<= 1, k++)
+        for (; dividend >= c; c <<= 1, k++)
             if (dividend - c < divisor)
-                return 1<<k;
+                return 1 << k;
 
         return divide1(dividend - (c >> 1), divisor) + (1 << (k - 1));
+    }
+
+    /**
+     * divide2 的非递归算法
+     * */
+    public static int divide2I(int dividend, int divisor) {
+        if (divisor == 0) {
+            throw new IllegalArgumentException("Divisor should not be 0.");
+        }
+
+        if (dividend < divisor) {
+            return 0;
+        }
+
+        int res = 0;
+        while (dividend > divisor) {
+            int k, c;
+            for (k = 0, c = divisor; dividend >= c; c <<= 1, k++) {
+                if (dividend - c < divisor) {
+                    res += 1 << k;
+                    break;
+                }
+            }
+            if (dividend - c < divisor) {
+                break;
+            }
+
+            res += 1 << (k - 1);
+            dividend -= c >> 1;
+        }
+
+        return res;
     }
 
     private Division() {
