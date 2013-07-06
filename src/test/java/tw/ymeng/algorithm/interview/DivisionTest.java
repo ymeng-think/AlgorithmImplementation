@@ -9,6 +9,11 @@ public class DivisionTest {
 
     @Test
     public void should_implement_division_only_with_addition_and_substraction() {
-        assertThat(Division.divide(6, 3), is(2));
+        assertThat(Division.divide1(100, 3), is(33));
+    }
+
+    @Test
+    public void should_implement_division_with_substraction_optimization_by_shift_operation() {
+        assertThat(Division.divide2(100, 3), is(33));
     }
 }
