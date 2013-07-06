@@ -9,7 +9,7 @@ import static tw.ymeng.algorithm.utils.StringEx.join;
 public class StringExTest {
 
     @Test
-    public static void should_concat_string_with_separator() {
+    public void should_concat_string_with_separator() {
         String[] strings = {"a", "b", "c"};
 
         String concatenation = join(strings, ",");

@@ -5,6 +5,7 @@ import tw.ymeng.algorithm.interview.permutation.Recorder;
 import tw.ymeng.algorithm.proposition.array.sorting.comparator.CharacterComparator;
 import tw.ymeng.algorithm.proposition.array.sorting.generics.QuickSort;
 
+import static tw.ymeng.algorithm.proposition.array.sorting.generics.QuickSort.qsort;
 import static tw.ymeng.algorithm.utils.Swapper.swap;
 
 public class IterativeAllPermutation implements PermutationStrategy {
@@ -49,8 +50,7 @@ public class IterativeAllPermutation implements PermutationStrategy {
     }
 
     private void permutate(Character[] chars) {
-        QuickSort<Character> quickSort = new QuickSort<Character>(chars, new CharacterComparator());
-        Character[] sorted = quickSort.sort();
+        Character[] sorted = qsort(chars, new CharacterComparator());
 
         do {
             recorder.record(convertToString(sorted));

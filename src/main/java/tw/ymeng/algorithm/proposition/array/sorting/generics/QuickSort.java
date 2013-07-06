@@ -7,7 +7,7 @@ public class QuickSort<T> implements Sort<T> {
     private T[] items;
     private Comparator<T> comparator;
 
-    public QuickSort(T[] items, Comparator<T> comparator) {
+    private QuickSort(T[] items, Comparator<T> comparator) {
         this.items = items;
         this.comparator = comparator;
     }
