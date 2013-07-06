@@ -1,5 +1,11 @@
 package tw.ymeng.algorithm.interview;
 
+import java.util.Comparator;
+
+import static java.lang.Integer.parseInt;
+import static tw.ymeng.algorithm.proposition.array.sorting.generics.QuickSort.qsort;
+import static tw.ymeng.algorithm.utils.StringEx.join;
+
 /**
  * 问题： (From Amazon)
  *
@@ -42,6 +48,31 @@ public class ArrangeArrayToMinNumber {
     }
 
     public int putInOrder() {
-        return 0;
+        String[] strings = convertToStringArray(array);
+        qsort(strings, new StringComparator());
+
+        return convertToNumber(strings);
+    }
+
+    private int convertToNumber(String[] strings) {
+        String string = join(strings, "");
+        return parseInt(string);
+    }
+
+    private static String[] convertToStringArray(int[] array) {
+        String[] strings = new String[array.length];
+
+        for (int i = 0; i < strings.length; i++) {
+            strings[i] = String.valueOf(array[i]);
+        }
+
+        return strings;
+    }
+
+    private static class StringComparator implements Comparator<String> {
+        @Override
+        public int compare(String s1, String s2) {
+            return (s1 + s2).compareTo(s2 + s1);
+        }
     }
 }

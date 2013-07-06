@@ -12,6 +12,10 @@ public class QuickSort<T> implements Sort<T> {
         this.comparator = comparator;
     }
 
+    public static <T> T[] qsort(T[] items, Comparator<T> comparator) {
+        return new QuickSort<T>(items, comparator).sort();
+    }
+
     @Override
     public T[] sort() {
         return sort(0, items.length - 1);
