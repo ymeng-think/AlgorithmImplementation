@@ -44,14 +44,14 @@ public class ShortestSummary {
         int targetLength = description.length + 1;
 
         while (true) {
-            while(!isAllExisted() && end < description.length) {
+            while(!hasIncludedAllKeywords() && end < description.length) {
                 if (keywordMapContains(description[end])) {
                     hitKeyword(indexInKeywordMap(description[end]));
                 }
                 end++;
             }
 
-            while(isAllExisted()) {
+            while(hasIncludedAllKeywords()) {
                 if (end - start < targetLength) {
                     targetLength = end - start;
                     summaryStart = start;
@@ -109,7 +109,7 @@ public class ShortestSummary {
         return map;
     }
 
-    private boolean isAllExisted() {
+    private boolean hasIncludedAllKeywords() {
         for (int hitCount : keywordHitRecorder) {
             if (hitCount == 0) {
                 return false;
