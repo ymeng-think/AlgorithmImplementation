@@ -11,11 +11,11 @@ public class ShortestSummaryTest {
     public void should_extract_the_shortest_summary_included_all_keywords_from_description() {
         ShortestSummary shortestSummary = new ShortestSummary(
                 "the set includes the 2013-w american eagle silver reverse proof coin",
-                new String[]{"eagle", "proof"});
+                new String[]{"the", "eagle", "proof"});
 
         String summary = shortestSummary.extract();
 
-        assertThat(summary, is("eagle silver reverse proof"));
+        assertThat(summary, is("the 2013-w american eagle silver reverse proof"));
     }
 
     @Test
@@ -27,5 +27,16 @@ public class ShortestSummaryTest {
         String summary = shortestSummary.extract();
 
         assertThat(summary, is("Eagle Silver Reverse Proof"));
+    }
+
+    @Test
+    public void should_choose_the_shortest_one_when_summary_that_includes_all_keywords_appears_multi_times() {
+        ShortestSummary shortestSummary = new ShortestSummary(
+                "eagle silver reverse proof coin eagle silver coin in america",
+                new String[]{"eagle", "coin"});
+
+        String summary = shortestSummary.extract();
+
+        assertThat(summary, is("coin eagle"));
     }
 }

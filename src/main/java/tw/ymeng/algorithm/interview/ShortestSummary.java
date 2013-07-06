@@ -26,27 +26,29 @@ import java.util.Map;
  */
 public class ShortestSummary {
 
-    private final String[] description;
+    private final String description;
+    private final String[] descriptionChars;
     private final Map<String,Integer> keywordMap;
     private final int[] keywordHitRecorder;
 
     public ShortestSummary(String description, String[] keywords) {
-        this.description = breakIntoArray(description);
+        this.description = description;
+        this.descriptionChars = breakIntoArray(this.description);
         this.keywordMap = buildKeywordsMap(keywords);
         this.keywordHitRecorder = new int[keywords.length];
     }
 
     public String extract() {
-        StringBuilder summary = new StringBuilder();
+        String summary = description;
 
         int start = 0, end = 0;
         int summaryStart = 0, summaryEnd = 0;
-        int targetLength = description.length + 1;
+        int targetLength = descriptionChars.length + 1;
 
         while (true) {
-            while(!hasIncludedAllKeywords() && end < description.length) {
-                if (keywordMapContains(description[end])) {
-                    hitKeyword(indexInKeywordMap(description[end]));
+            while(!hasIncludedAllKeywords() && end < descriptionChars.length) {
+                if (keywordMapContains(descriptionChars[end])) {
+                    hitKeyword(indexInKeywordMap(descriptionChars[end]));
                 }
                 end++;
             }
@@ -58,18 +60,33 @@ public class ShortestSummary {
                     summaryEnd = end - 1;
                 }
 
-                if (keywordMapContains(description[start])) {
-                    removeHitKeyword(indexInKeywordMap(description[start]));
+                if (keywordMapContains(descriptionChars[start])) {
+                    removeHitKeyword(indexInKeywordMap(descriptionChars[start]));
                 }
 
                 start++;
             }
 
-            if (end >= description.length) {
+            if (end >= descriptionChars.length) {
                 break;
             }
 
-            appendToSummary(summary, summaryStart, summaryEnd);
+            String newSummary = buildSummary(summaryStart, summaryEnd);
+            if (newSummary.length() < summary.length()) {
+                summary = newSummary;
+            }
+        }
+
+        return summary;
+    }
+
+    private String buildSummary(int start, int end) {
+        StringBuilder summary = new StringBuilder();
+        for (int i = start; i <= end; i++) {
+            summary.append(descriptionChars[i]);
+            if (i < end) {
+                summary.append(" ");
+            }
         }
 
         return summary.toString();
@@ -77,15 +94,6 @@ public class ShortestSummary {
 
     private boolean keywordMapContains(String word) {
         return keywordMap.containsKey(ignoreCase(word));
-    }
-
-    private void appendToSummary(StringBuilder summary, int start, int end) {
-        for (int i = start; i <= end; i++) {
-            summary.append(description[i]);
-            if (i < end) {
-                summary.append(" ");
-            }
-        }
     }
 
     private int indexInKeywordMap(String word) {
