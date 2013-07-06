@@ -2,7 +2,7 @@ package tw.ymeng.algorithm.proposition.histogram;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class HistogramTest {

@@ -1,10 +1,8 @@
 package tw.ymeng.algorithm.proposition.histogram;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.sameInstance;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static tw.ymeng.algorithm.proposition.histogram.BitmapBuilder.*;
 

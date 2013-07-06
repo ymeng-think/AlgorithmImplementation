@@ -1,9 +1,8 @@
 package tw.ymeng.algorithm.interview;
 
 import org.junit.Test;
-import tw.ymeng.algorithm.interview.ArabicNumber;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class ArabicNumberTest {

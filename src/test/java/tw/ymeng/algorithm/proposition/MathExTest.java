@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.math.BigInteger;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static tw.ymeng.algorithm.proposition.MathEx.pow;
 

@@ -3,7 +3,7 @@ package tw.ymeng.algorithm.proposition.binarytree.command;
 import org.junit.Test;
 import tw.ymeng.algorithm.proposition.binarytree.Node;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class InsertTest {

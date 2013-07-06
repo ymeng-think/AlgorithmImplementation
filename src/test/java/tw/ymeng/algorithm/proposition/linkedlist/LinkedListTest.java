@@ -3,7 +3,7 @@ package tw.ymeng.algorithm.proposition.linkedlist;
 import org.junit.Test;
 import tw.ymeng.algorithm.proposition.linkedlist.command.FindNToLastNode;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static tw.ymeng.algorithm.proposition.linkedlist.LinkedListBuilder.build;
