@@ -33,7 +33,7 @@ public class BinarySearchTest {
     public void should_return_index_when_search_an_existed_item_in_a_section() {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
-        assertEquals(3, algorithm.searchInRange(5, 3, 6));
+        assertEquals(3, algorithm.search(5, 3, 6));
     }
 
     @Test

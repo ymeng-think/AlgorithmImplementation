@@ -68,6 +68,6 @@ public class LoopOrderedArray {
     }
 
     private int binarySearch(int[] array, int target, int start, int end) {
-        return new BinarySearch(array).searchInRange(target, start, end);
+        return new BinarySearch(array).search(target, start, end);
     }
 }

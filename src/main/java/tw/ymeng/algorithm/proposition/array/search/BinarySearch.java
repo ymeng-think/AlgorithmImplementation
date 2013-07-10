@@ -17,36 +17,7 @@ public class BinarySearch {
         return search(item, 0, items.length - 1);
     }
 
-    public int searchPrevItem(int item) {
-        return searchPrevItem(item, 0, items.length - 1);
-    }
-
-    public int searchNextItem(int item) {
-        return searchNextItem(item, 0, items.length - 1);
-    }
-
-    public int searchInRange(int target, int start, int end) {
-        int mid;
-        int left = start - 1;
-        int right = end + 1;
-
-        while (left + 1 != right) {
-            mid = left + (right - left) / 2;
-            if (items[mid] < target) {
-                left = mid;
-            } else {
-                right = mid;
-            }
-        }
-
-        if (right <= end && items[right] == target) {
-            return right;
-        }
-
-        return -1;
-    }
-
-    private int search(int target, int start, int end) {
+    public int search(int target, int start, int end) {
         while (start <= end) {
             int mid = start + (end - start) / 2;
 
@@ -60,6 +31,14 @@ public class BinarySearch {
         }
 
         return -1;
+    }
+
+    public int searchPrevItem(int item) {
+        return searchPrevItem(item, 0, items.length - 1);
+    }
+
+    public int searchNextItem(int item) {
+        return searchNextItem(item, 0, items.length - 1);
     }
 
     private int searchPrevItem(int target, int start, int end) {
