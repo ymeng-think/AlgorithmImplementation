@@ -16,6 +16,13 @@ public class BinarySearchTest {
     }
 
     @Test
+    public void should_return_index_when_search_item_in_an_array_that_only_contains_one_element() {
+        BinarySearch algorithm = new BinarySearch(new int[]{2});
+
+        assertEquals(0, algorithm.search(2));
+    }
+
+    @Test
     public void should_return_index_when_search_an_existed_item() {
         BinarySearch algorithm = new BinarySearch(sortedItems);
 
