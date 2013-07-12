@@ -2,18 +2,11 @@ package tw.ymeng.algorithm.interview.polygon_filling.strategy;
 
 class FloodFillAlgorithm implements FillStrategy {
 
-    private int[][] direction8 = new int[8][];
+    private final Direction direction;
     private char[][] graph;
 
-    public FloodFillAlgorithm() {
-        direction8[0] = new int[]{-1,  0};
-        direction8[1] = new int[]{-1,  1};
-        direction8[2] = new int[]{ 0,  1};
-        direction8[3] = new int[]{ 1,  1};
-        direction8[4] = new int[]{ 1,  0};
-        direction8[5] = new int[]{ 1, -1};
-        direction8[6] = new int[]{ 0, -1};
-        direction8[7] = new int[]{-1, -1};
+    FloodFillAlgorithm(Direction direction) {
+        this.direction = direction;
     }
 
     @Override
@@ -31,8 +24,8 @@ class FloodFillAlgorithm implements FillStrategy {
                 graph[x][y] == oldValue) {
             graph[x][y] = newValue;
 
-            for (int[] aDirection8 : direction8) {
-                fill(x + aDirection8[0], y + aDirection8[1], oldValue, newValue);
+            for (Offset offset : direction.offsets()) {
+                fill(x + offset.x(), y + offset.y(), oldValue, newValue);
             }
         }
 
