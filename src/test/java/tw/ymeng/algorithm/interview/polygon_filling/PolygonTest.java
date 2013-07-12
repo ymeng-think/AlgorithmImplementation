@@ -60,4 +60,19 @@ public class PolygonTest {
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         }).build()));
     }
+
+    @Test
+    public void should_NOT_beyond_the_boundary_of_graph() {
+        Polygon polygon = new Polygon(graph(2).map(new char[]{
+                2, 0,
+                0, 0,
+        }).build());
+
+        char[][] filled = polygon.fill(floodFillAlgorithm(), 0, 0, '4');
+
+        assertThat(filled, is(graph(2).map(new char[]{
+                4, 0,
+                0, 0,
+        }).build()));
+    }
 }

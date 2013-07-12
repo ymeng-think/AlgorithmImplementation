@@ -27,13 +27,15 @@ class FloodFillAlgorithm implements FillStrategy {
     }
 
     private char[][] fill(int x, int y, char oldValue, char newValue) {
-        if (graph[x][y] == oldValue) {
+        if (x >= 0 && y >= 0 &&
+                graph[x][y] == oldValue) {
             graph[x][y] = newValue;
 
             for (int[] aDirection8 : direction8) {
                 fill(x + aDirection8[0], y + aDirection8[1], oldValue, newValue);
             }
         }
+
         return graph;
     }
 }
