@@ -20,8 +20,7 @@ class FloodFillAlgorithm implements FillStrategy {
     }
 
     private char[][] fill(int x, int y, char oldValue, char newValue) {
-        if (x >= 0 && y >= 0 &&
-                graph[x][y] == oldValue) {
+        if (isInBoundary(x, y) && graph[x][y] == oldValue) {
             graph[x][y] = newValue;
 
             for (Offset offset : direction.offsets()) {
@@ -30,5 +29,9 @@ class FloodFillAlgorithm implements FillStrategy {
         }
 
         return graph;
+    }
+
+    private boolean isInBoundary(int x, int y) {
+        return x >= 0 && y >= 0 && x < graph[0].length && y < graph.length;
     }
 }
