@@ -1,5 +1,8 @@
 package tw.ymeng.algorithm.interview.polygon_filling;
 
+import tw.ymeng.algorithm.interview.polygon_filling.strategy.FillStrategy;
+import tw.ymeng.algorithm.interview.polygon_filling.strategy.Point;
+
 /**
  * 平面区域填充算法是计算机图形学领域的一个很重要的算法，区域填充即给出一个区域的边界（也可以是没有边界，只是给出指定颜色），
  * 要求将边界范围内的所有象素单元都修改成指定的颜色（也可能是图案填充）。区域填充中最常用的是多边形填色，本文中我们就讨论
@@ -56,7 +59,12 @@ public class Polygon {
         this.graph = graph;
     }
 
-    public char[][] fill(FillStrategy strategy) {
-        return strategy.fill(graph);
+    public char[][] fill(FillStrategy strategy, int x, int y, char newValue) {
+        strategy.setGraph(graph);
+        return strategy.fill(new Point(x, y), getOldValue(x, y), newValue);
+    }
+
+    private char getOldValue(int x, int y) {
+        return graph[x][y];
     }
 }

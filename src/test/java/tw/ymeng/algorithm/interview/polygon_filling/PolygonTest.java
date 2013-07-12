@@ -3,6 +3,7 @@ package tw.ymeng.algorithm.interview.polygon_filling;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import tw.ymeng.algorithm.interview.polygon_filling.strategy.Point;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -37,9 +38,8 @@ public class PolygonTest {
     }
 
     @Test
-    @Ignore
     public void should_fill_polygon_with_flood_fill_algorithm() {
-        char[][] filled = polygon.fill(floodFillAlgorithm());
+        char[][] filled = polygon.fill(floodFillAlgorithm(), 5, 3, '4');
 
         assertThat(filled, is(graph(16).map(new char[]{
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
