@@ -42,10 +42,6 @@ class PostfixExpression {
             }
 
             Token stackTop = new Token(stack.peek());
-            if (token.comparePriority(stackTop) > 0) {
-                stack.push(c);
-                continue;
-            }
 
             if (stackTop.isLeftBracket()) {
                 stack.push(c);
@@ -55,15 +51,12 @@ class PostfixExpression {
             if (token.comparePriority(stackTop) <= 0) {
                 if (enteredBrackets > 0) {
                     postfixTokens.add(stack.pop());
-                    stack.push(c);
                 } else {
                     popStackUntilLowerPriorityOperator(stack, postfixTokens, c);
-                    stack.push(c);
                 }
-                continue;
             }
-
-            postfixTokens.add(c);
+            
+            stack.push(c);
         }
 
         while (!stack.empty()) {
