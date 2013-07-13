@@ -37,21 +37,22 @@ public class Calculator {
 
     public double calculate() {
         for (int i = 0; i < tokens.length; i++) {
-            char token = tokens[i];
+            Token token = new Token(tokens[i]);
 
-            if (isDigit(token)) {
-                append(toDouble(token));
+            if (token.isDigit()) {
+                append(toDouble(tokens[i]));
                 continue;
             }
 
-            if (isPlusSign(token) || isMinusSign(token)) {
-                append(token);
+            if (token.isPlusSign() || token.isMinusSign()) {
+                append(tokens[i]);
                 continue;
             }
 
-            if (isProductSign(token) || isDivisionSign(token)) {
+            if (token.isProductSign() || token.isDivisionSign()) {
                 Double result = (Double)popLast();
-                result = calculate(token, result, toDouble(tokens[++i]));
+                result = calculate(tokens[i], result, toDouble(tokens[i + 1]));
+                i++;
                 append(result);
             }
         }
@@ -76,26 +77,6 @@ public class Calculator {
 
     private void append(Object obj) {
         sequence.add(obj);
-    }
-
-    private static boolean isDivisionSign(char token) {
-        return token == '/';
-    }
-
-    private static boolean isProductSign(char token) {
-        return token == '*';
-    }
-
-    private static boolean isMinusSign(char token) {
-        return token == '-';
-    }
-
-    private static boolean isPlusSign(char token) {
-        return token == '+';
-    }
-
-    private static boolean isDigit(char token) {
-        return token >= 48 && token <= 57;
     }
 
     private static double calculate(char token, double a, double b) {

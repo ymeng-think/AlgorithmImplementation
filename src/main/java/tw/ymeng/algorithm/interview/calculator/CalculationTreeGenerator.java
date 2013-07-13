@@ -34,36 +34,19 @@ class CalculationTreeGenerator {
         return tokenPriority < rootPriority;
     }
 
-    private int getPriority(char token) {
-        if (isDigit(token)) {
+    private int getPriority(char c) {
+        Token token = new Token(c);
+
+        if (token.isDigit()) {
             return 3;
         }
-        if (isProductSign(token) || isDivisionSign(token)) {
+        if (token.isProductSign() || token.isDivisionSign()) {
             return 2;
         }
-        if (isPlusSign(token) || isMinusSign(token)) {
+        if (token.isPlusSign() || token.isMinusSign()) {
             return 1;
         }
-        throw new IllegalArgumentException("Unknown token: " + token);
+        throw new IllegalArgumentException("Unknown token: " + c);
     }
 
-    private static boolean isDivisionSign(char token) {
-        return token == '/';
-    }
-
-    private static boolean isProductSign(char token) {
-        return token == '*';
-    }
-
-    private static boolean isMinusSign(char token) {
-        return token == '-';
-    }
-
-    private static boolean isPlusSign(char token) {
-        return token == '+';
-    }
-
-    private static boolean isDigit(char token) {
-        return token >= 48 && token <= 57;
-    }
 }
