@@ -13,4 +13,25 @@ public class CalculatorTest {
 
         assertThat(calculator.calculate(), is(2.0));
     }
+
+    @Test
+    public void should_calculate_simple_subtraction() {
+        Calculator calculator = new Calculator(new char[]{'1', '-', '1'});
+
+        assertThat(calculator.calculate(), is(0.0));
+    }
+
+    @Test
+    public void should_calculate_simple_multiplication() {
+        Calculator calculator = new Calculator(new char[]{'1', '*', '2'});
+
+        assertThat(calculator.calculate(), is(2.0));
+    }
+
+    @Test
+    public void should_calculate_simple_division() {
+        Calculator calculator = new Calculator(new char[]{'1', '/', '2'});
+
+        assertThat(calculator.calculate(), is(0.5));
+    }
 }

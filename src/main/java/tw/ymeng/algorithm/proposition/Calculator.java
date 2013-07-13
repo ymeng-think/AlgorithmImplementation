@@ -43,6 +43,12 @@ public class Calculator {
         switch (token) {
             case '+':
                 return a + b;
+            case '-':
+                return a - b;
+            case '*':
+                return a * b;
+            case '/':
+                return a / b;
         }
         throw new IllegalArgumentException("Illegal operator: " + token);
     }
