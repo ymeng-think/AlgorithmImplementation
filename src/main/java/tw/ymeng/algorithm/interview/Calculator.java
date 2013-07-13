@@ -36,8 +36,6 @@ public class Calculator {
     }
 
     public double calculate() {
-        Double result = null;
-
         for (int i = 0; i < tokens.length; i++) {
             char token = tokens[i];
 
@@ -52,20 +50,13 @@ public class Calculator {
             }
 
             if (isProductSign(token) || isDivisionSign(token)) {
-                if (result == null) {
-                    result = (Double)popLast();
-                }
+                Double result = (Double)popLast();
                 result = calculate(token, result, toDouble(tokens[++i]));
                 append(result);
-                result = null;
             }
         }
 
-        if (result != null) {
-            append(result);
-        }
-
-        result = (Double) sequence.get(0);
+        Double result = (Double) sequence.get(0);
         for (int i = 1; i < sequence.size(); i += 2) {
             Character operator = (Character) sequence.get(i);
             Double other = (Double) sequence.get(i + 1);
