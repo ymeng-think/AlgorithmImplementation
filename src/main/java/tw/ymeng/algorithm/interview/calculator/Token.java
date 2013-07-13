@@ -28,8 +28,17 @@ public class Token {
         return data >= 48 && data <= 57;
     }
 
+    public boolean isLeftBracket() {
+        return data == '(';
+    }
+
+    public boolean isRightBracket() {
+        return data == ')';
+    }
+
     public boolean isOperator() {
-        return isPlusSign() || isMinusSign() || isProductSign() || isDivisionSign();
+        return isPlusSign() || isMinusSign() || isProductSign() || isDivisionSign() ||
+                isLeftBracket() || isRightBracket();
     }
 
     public int comparePriority(Token token) {
@@ -38,6 +47,8 @@ public class Token {
 
     private static int getPriority(char c) {
         switch (c) {
+            case '(':
+                return 3;
             case '*':
                 return 2;
             case '/':
