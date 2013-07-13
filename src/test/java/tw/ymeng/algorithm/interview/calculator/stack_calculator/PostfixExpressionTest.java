@@ -36,6 +36,13 @@ public class PostfixExpressionTest {
         assertThat(postfixExpression.transform(), is(new char[]{'1', '2', '3', '*', '4', '-', '+'}));
     }
 
+    @Test
+    public void should_transform_infix_expression_that_two_lower_priority_operators_surround_one_higher_priority_operator() {
+        PostfixExpression postfixExpression = buildPostfix("1 + 2 * 3 - 4");
+
+        assertThat(postfixExpression.transform(), is(new char[]{'1', '2', '3', '*', '+', '4', '-'}));
+    }
+
     private PostfixExpression buildPostfix(String expression) {
         return new PostfixExpression(new CharTokenParser(expression).parse());
     }

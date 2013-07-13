@@ -45,6 +45,10 @@ public class Token {
         return getPriority(data) - getPriority(token.data);
     }
 
+    public static int comparePriority(char a, char b) {
+        return getPriority(a) - getPriority(b);
+    }
+
     private static int getPriority(char c) {
         switch (c) {
             case '(':

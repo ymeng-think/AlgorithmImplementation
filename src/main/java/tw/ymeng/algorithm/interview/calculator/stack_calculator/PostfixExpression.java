@@ -17,6 +17,7 @@ class PostfixExpression {
     public char[] transform() {
         Stack<Character> stack = new Stack<Character>();
         List<Character> postfixTokens = new ArrayList<Character>();
+        int enteredBrackets = 0;
 
         for (char c : tokens) {
             Token token = new Token(c);
@@ -32,18 +33,33 @@ class PostfixExpression {
 
             if (token.isRightBracket()) {
                 clearStackUntilLatestLeftBracket(stack, postfixTokens);
+                enteredBrackets--;
                 continue;
             }
 
+            if (token.isLeftBracket()) {
+                enteredBrackets++;
+            }
+
             Token stackTop = new Token(stack.peek());
-            if (token.comparePriority(stackTop) > 0 || stackTop.isLeftBracket()) {
+            if (token.comparePriority(stackTop) > 0) {
+                stack.push(c);
+                continue;
+            }
+
+            if (stackTop.isLeftBracket()) {
                 stack.push(c);
                 continue;
             }
 
             if (token.comparePriority(stackTop) <= 0) {
-                postfixTokens.add(stack.pop());
-                stack.push(c);
+                if (enteredBrackets > 0) {
+                    postfixTokens.add(stack.pop());
+                    stack.push(c);
+                } else {
+                    popStackUntilLowerPriorityOperator(stack, postfixTokens, c);
+                    stack.push(c);
+                }
                 continue;
             }
 
@@ -57,8 +73,14 @@ class PostfixExpression {
         return convertToCharArray(postfixTokens);
     }
 
+    private void popStackUntilLowerPriorityOperator(Stack<Character> stack, List<Character> postfixTokens, char c) {
+        while (!stack.empty() && Token.comparePriority(stack.peek(), c) >= 0) {
+            postfixTokens.add(stack.pop());
+        }
+    }
+
     private void clearStackUntilLatestLeftBracket(Stack<Character> stack, List<Character> postfixTokens) {
-        Character token = stack.pop();
+        char token = stack.pop();
         while (token != '(') {
             postfixTokens.add(token);
             token = stack.pop();
