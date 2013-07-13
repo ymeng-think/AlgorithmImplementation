@@ -22,8 +22,8 @@ class PostfixExpressionCalculator {
                 continue;
             }
 
-            int op1 = stack.pop();
             int op2 = stack.pop();
+            int op1 = stack.pop();
             stack.push(calculate(c, op1, op2));
         }
 

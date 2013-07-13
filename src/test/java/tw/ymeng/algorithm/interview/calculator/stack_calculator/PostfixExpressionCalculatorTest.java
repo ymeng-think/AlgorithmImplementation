@@ -15,6 +15,15 @@ public class PostfixExpressionCalculatorTest {
     }
 
     @Test
+    public void should_pop_operands_in_correct_order() {
+        PostfixExpressionCalculator calculator = new PostfixExpressionCalculator(
+                new char[]{'4', '2', '/'}
+        );
+
+        assertThat(calculator.calculate(), is(2));
+    }
+
+    @Test
     public void should_calculate_complicated_postfix_expression() {
         PostfixExpressionCalculator calculator = new PostfixExpressionCalculator(
                 new char[]{'1', '2', '3', '*', '+', '4', '5', '*', '6', '+', '7', '*', '+'}
