@@ -43,6 +43,14 @@ public class PostfixExpressionTest {
         assertThat(postfixExpression.transform(), is(new char[]{'1', '2', '3', '*', '+', '4', '-'}));
     }
 
+    @Test
+    public void should_transform_complicated_infix_expression() {
+        PostfixExpression postfixExpression = buildPostfix("1 + 2 * 3 + (4 * 5 + 6) * 7");
+
+        assertThat(postfixExpression.transform(),
+                is(new char[]{'1', '2', '3', '*', '+', '4', '5', '*', '6', '+', '7', '*', '+'}));
+    }
+
     private PostfixExpression buildPostfix(String expression) {
         return new PostfixExpression(new CharTokenParser(expression).parse());
     }
