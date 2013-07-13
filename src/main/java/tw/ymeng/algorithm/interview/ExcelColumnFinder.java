@@ -24,11 +24,24 @@ package tw.ymeng.algorithm.interview;
  * */
 public class ExcelColumnFinder {
 
-    private static final String[] LABELS = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
-            "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "Z"};
+    private static final String[] LABELS = {"", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+            "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "Z"};
+    private static final int ALPHA_COUNT = 26;
 
     public String find(int columnIndex) {
-        int index = columnIndex - 1;
-        return LABELS[index];
+        StringBuilder buffer = new StringBuilder();
+        find(buffer, columnIndex);
+
+        return buffer.toString();
+    }
+
+    public void find(StringBuilder buffer, int columnIndex) {
+        if (columnIndex <= ALPHA_COUNT) {
+            buffer.append(LABELS[columnIndex]);
+            return;
+        }
+
+        find(buffer, columnIndex / ALPHA_COUNT);
+        buffer.append(LABELS[columnIndex % ALPHA_COUNT]);
     }
 }
