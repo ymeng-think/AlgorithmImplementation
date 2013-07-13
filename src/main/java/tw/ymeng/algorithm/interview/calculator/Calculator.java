@@ -1,4 +1,4 @@
-package tw.ymeng.algorithm.interview;
+package tw.ymeng.algorithm.interview.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Calculator {
     private List<Object> sequence = new ArrayList<Object>();
 
     public Calculator(String expression) {
-        this(breakToTokens(expression));
+        this(new CharTokenParser(expression).parse());
     }
 
     public Calculator(char[] tokens) {
@@ -66,17 +66,6 @@ public class Calculator {
         return result;
     }
 
-    private static char[] breakToTokens(String expression) {
-        String[] items = expression.split("\\s+");
-
-        char[] tokens = new char[items.length];
-        for (int i = 0; i < tokens.length; i++) {
-            tokens[i] = items[i].charAt(0);
-        }
-
-        return tokens;
-    }
-
     private Object popLast() {
         int lastIndex = sequence.size() - 1;
         Object last = sequence.get(lastIndex);
@@ -89,27 +78,27 @@ public class Calculator {
         sequence.add(obj);
     }
 
-    private boolean isDivisionSign(char token) {
+    private static boolean isDivisionSign(char token) {
         return token == '/';
     }
 
-    private boolean isProductSign(char token) {
+    private static boolean isProductSign(char token) {
         return token == '*';
     }
 
-    private boolean isMinusSign(char token) {
+    private static boolean isMinusSign(char token) {
         return token == '-';
     }
 
-    private boolean isPlusSign(char token) {
+    private static boolean isPlusSign(char token) {
         return token == '+';
     }
 
-    private boolean isDigit(char token) {
+    private static boolean isDigit(char token) {
         return token >= 48 && token <= 57;
     }
 
-    private double calculate(char token, double a, double b) {
+    private static double calculate(char token, double a, double b) {
         switch (token) {
             case '+':
                 return a + b;
@@ -123,7 +112,7 @@ public class Calculator {
         throw new IllegalArgumentException("Illegal operator: " + token);
     }
 
-    private double toDouble(char token) {
+    private static double toDouble(char token) {
         return (int)token - 48;
     }
 
