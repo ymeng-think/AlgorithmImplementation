@@ -1,38 +1,87 @@
 package tw.ymeng.algorithm.proposition;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Calculator {
 
     private final char[] tokens;
-    private Stack<Double> intermediateResult = new Stack<Double>();
+    private List<Object> sequence = new ArrayList<Object>();
 
     public Calculator(char[] tokens) {
         this.tokens = tokens;
     }
 
     public double calculate() {
-        int index = 0;
+        Double result = null;
 
-        while (index < tokens.length) {
-            char token = tokens[index++];
+        for (int i = 0; i < tokens.length; i++) {
+            char token = tokens[i];
 
             if (isDigit(token)) {
-                if (intermediateResult.empty()) {
-                    intermediateResult.push(toDouble(token));
+                append(toDouble(token));
+                continue;
+            }
+
+            if (isPlusSign(token) || isMinusSign(token)) {
+                append(token);
+                continue;
+            }
+
+            if (isProductSign(token) || isDivisionSign(token)) {
+                if (result == null) {
+                    result = (Double)popLast();
                 }
-            } else if (isOperator(token)) {
-                double a = intermediateResult.pop();
-                double b = toDouble(tokens[index++]);
-                intermediateResult.push(calculate(token, a, b));
+                result = calculate(token, result, toDouble(tokens[++i]));
+                continue;
+            }
+
+            if (result != null) {
+                append(result);
+                result = null;
             }
         }
 
-        return intermediateResult.pop();
+        if (result != null) {
+            append(result);
+        }
+
+        result = (Double) sequence.get(0);
+        for (int i = 1; i < sequence.size(); i += 2) {
+            Character operator = (Character) sequence.get(i);
+            Double other = (Double) sequence.get(i + 1);
+            result = calculate(operator, result, other);
+        }
+
+        return result;
     }
 
-    private boolean isOperator(char token) {
-        return token == '+' || token == '-' || token == '*' || token == '/';
+    private Object popLast() {
+        int lastIndex = sequence.size() - 1;
+        Object last = sequence.get(lastIndex);
+        sequence.remove(lastIndex);
+
+        return last;
+    }
+
+    private void append(Object obj) {
+        sequence.add(obj);
+    }
+
+    private boolean isDivisionSign(char token) {
+        return token == '/';
+    }
+
+    private boolean isProductSign(char token) {
+        return token == '*';
+    }
+
+    private boolean isMinusSign(char token) {
+        return token == '-';
+    }
+
+    private boolean isPlusSign(char token) {
+        return token == '+';
     }
 
     private boolean isDigit(char token) {
