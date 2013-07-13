@@ -8,6 +8,7 @@ import java.util.Stack;
 
 class PostfixExpression {
 
+    private static final char LEFT_BRACKET = '(';
     private final char[] tokens;
 
     public PostfixExpression(char[] tokens) {
@@ -74,7 +75,7 @@ class PostfixExpression {
 
     private void clearStackUntilLatestLeftBracket(Stack<Character> stack, List<Character> postfixTokens) {
         char token = stack.pop();
-        while (token != '(') {
+        while (token != LEFT_BRACKET) {
             postfixTokens.add(token);
             token = stack.pop();
         }
