@@ -26,7 +26,11 @@ class PostfixExpression {
             }
 
             if (token.isOperator()) {
-                stack.push(c);
+                if (stack.empty() || token.comparePriority(new Token(stack.peek())) > 0) {
+                    stack.push(c);
+                } else {
+                    postfixTokens.add(c);
+                }
             }
         }
 
