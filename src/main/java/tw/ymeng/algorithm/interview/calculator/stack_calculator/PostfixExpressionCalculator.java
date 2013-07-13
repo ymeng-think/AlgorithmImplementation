@@ -1,6 +1,7 @@
 package tw.ymeng.algorithm.interview.calculator.stack_calculator;
 
 import tw.ymeng.algorithm.interview.calculator.Token;
+import tw.ymeng.algorithm.interview.calculator.stack_calculator.operation.Operations;
 
 import java.util.Stack;
 
@@ -31,17 +32,7 @@ class PostfixExpressionCalculator {
     }
 
     private int calculate(char operator, int a, int b) {
-        switch (operator) {
-            case '+':
-                return a + b;
-            case '-':
-                return a - b;
-            case '*':
-                return a * b;
-            case '/':
-                return a / b;
-        }
-        throw new IllegalArgumentException("Illegal operator: " + operator);
+        return Operations.create(operator).execute(a, b);
     }
 
     private static Integer toInt(char c) {
