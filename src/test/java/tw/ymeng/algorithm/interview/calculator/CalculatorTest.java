@@ -52,7 +52,7 @@ public class CalculatorTest {
 
     @Test
     public void should_pass_case_1() {
-        Calculator calculator = new Calculator("2 * 5 - 4 / 2");
+        Calculator calculator = new Calculator("2*5 - 4 /2");
 
         assertThat(calculator.calculate(), is(8.0));
     }
