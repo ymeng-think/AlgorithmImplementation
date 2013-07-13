@@ -41,6 +41,12 @@ class PostfixExpression {
                 continue;
             }
 
+            if (token.comparePriority(stackTop) <= 0) {
+                postfixTokens.add(stack.pop());
+                stack.push(c);
+                continue;
+            }
+
             postfixTokens.add(c);
         }
 
