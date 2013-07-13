@@ -8,6 +8,10 @@ public class Calculator {
     private final char[] tokens;
     private List<Object> sequence = new ArrayList<Object>();
 
+    public Calculator(String expression) {
+        this(breakToTokens(expression));
+    }
+
     public Calculator(char[] tokens) {
         this.tokens = tokens;
     }
@@ -33,10 +37,6 @@ public class Calculator {
                     result = (Double)popLast();
                 }
                 result = calculate(token, result, toDouble(tokens[++i]));
-                continue;
-            }
-
-            if (result != null) {
                 append(result);
                 result = null;
             }
@@ -54,6 +54,17 @@ public class Calculator {
         }
 
         return result;
+    }
+
+    private static char[] breakToTokens(String expression) {
+        String[] items = expression.split("\\s+");
+
+        char[] tokens = new char[items.length];
+        for (int i = 0; i < tokens.length; i++) {
+            tokens[i] = items[i].charAt(0);
+        }
+
+        return tokens;
     }
 
     private Object popLast() {
