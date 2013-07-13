@@ -1,8 +1,27 @@
-package tw.ymeng.algorithm.proposition;
+package tw.ymeng.algorithm.interview;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Question (expression evaluation)
+ *
+ * Please write code to evaluate an abstract expression contains:interger, '+', '-', '*', '/'.
+ * If you could process '('and ')' then will be a plus. We have some test cases for '(' and ')', try to pass them.
+ * If you can use object-oriented code to write the code then will be a big plus.
+ *
+ * Note: Please also write some test cases and include them in the comments of your code.It will be a plus.
+ * Note: Don't call system commands or any shell script to calculate the expressions, we will check your code logic.
+ * Note: You can refer the code sample below for the input/output
+
+ Example1
+ input: 2 * 5 - 4 / 2
+ output: 8
+
+ Example2
+ input: 2 * (1 + 4 * 2) - 9 / 3
+ output: 15
+ * */
 public class Calculator {
 
     private final char[] tokens;

@@ -1,6 +1,7 @@
-package tw.ymeng.algorithm.proposition;
+package tw.ymeng.algorithm.interview;
 
 import org.junit.Test;
+import tw.ymeng.algorithm.interview.Calculator;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
