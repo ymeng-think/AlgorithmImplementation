@@ -1,6 +1,6 @@
 package tw.ymeng.algorithm.interview.calculator;
 
-class Token {
+public class Token {
 
     private final char token;
 

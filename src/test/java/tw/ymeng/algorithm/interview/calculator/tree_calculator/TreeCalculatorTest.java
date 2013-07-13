@@ -1,6 +1,7 @@
-package tw.ymeng.algorithm.interview.calculator;
+package tw.ymeng.algorithm.interview.calculator.tree_calculator;
 
 import org.junit.Test;
+import tw.ymeng.algorithm.interview.calculator.tree_calculator.TreeCalculator;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
