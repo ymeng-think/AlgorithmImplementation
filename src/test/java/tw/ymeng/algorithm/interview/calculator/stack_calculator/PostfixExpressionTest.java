@@ -31,9 +31,10 @@ public class PostfixExpressionTest {
 
     @Test
     public void should_transform_infix_expression_that_contains_multi_operands_in_brackets() {
-        PostfixExpression postfixExpression = buildPostfix("1 + (2 * 3 - 4)");
+        PostfixExpression postfixExpression = buildPostfix("1 + (2 + 3 * 4 - 5)");
 
-        assertThat(postfixExpression.transform(), is(new char[]{'1', '2', '3', '*', '4', '-', '+'}));
+        assertThat(postfixExpression.transform(),
+                is(new char[]{'1', '2', '3', '4', '*', '+', '5', '-', '+'}));
     }
 
     @Test

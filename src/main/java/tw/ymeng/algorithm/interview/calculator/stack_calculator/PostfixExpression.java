@@ -51,7 +51,7 @@ class PostfixExpression {
 
             if (token.comparePriority(stackTop) <= 0) {
                 if (enteredBrackets > 0) {
-                    postfixTokens.add(stack.pop());
+                    popStackUntilLowerPriorityOperatorExceptLeftBracket(stack, postfixTokens, c);
                 } else {
                     popStackUntilLowerPriorityOperator(stack, postfixTokens, c);
                 }
@@ -65,6 +65,15 @@ class PostfixExpression {
         }
 
         return convertToCharArray(postfixTokens);
+    }
+
+    private void popStackUntilLowerPriorityOperatorExceptLeftBracket(Stack<Character> stack,
+                                                                     List<Character> postfixTokens, char c) {
+        while (!stack.empty() &&
+                !(new Token(stack.peek()).isLeftBracket()) &&
+                Token.comparePriority(stack.peek(), c) >= 0) {
+            postfixTokens.add(stack.pop());
+        }
     }
 
     private void popStackUntilLowerPriorityOperator(Stack<Character> stack, List<Character> postfixTokens, char c) {
